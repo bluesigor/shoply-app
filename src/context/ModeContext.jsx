@@ -3,16 +3,19 @@ import { createContext, useMemo, useState } from 'react'
 export const ModeContext = createContext()
 
 export const ModeProvider = ({ children }) => {
-  const prefersMode = useMediaQuery('(prefers-color-scheme: light)')
-  const [color, setColor] = useState(prefersMode)
+  const [color, setColor] = useState(false)
+  const prefersMode = useMediaQuery(
+    `(prefers-color-scheme: ${color ? 'light' : 'dark'})`,
+  )
+
   const theme = useMemo(
     () =>
       createTheme({
         palette: {
-          mode: color ? 'light' : 'dark',
+          mode: prefersMode ? 'light' : 'dark',
         },
       }),
-    [color],
+    [prefersMode],
   )
 
   const handleColor = () => setColor((prev) => !prev)
