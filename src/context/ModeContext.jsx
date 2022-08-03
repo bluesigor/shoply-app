@@ -12,7 +12,7 @@ export const ModeProvider = ({ children }) => {
     () =>
       createTheme({
         palette: {
-          mode: prefersMode ? 'light' : 'dark',
+          mode: prefersMode ? 'dark' : 'light',
         },
       }),
     [prefersMode],
