@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider, useMediaQuery } from '@mui/material'
-import { createContext, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
+
 export const ModeContext = createContext()
 
 export const ModeProvider = ({ children }) => {
@@ -7,7 +8,6 @@ export const ModeProvider = ({ children }) => {
   const prefersMode = useMediaQuery(
     `(prefers-color-scheme: ${color ? 'light' : 'dark'})`,
   )
-
   const theme = useMemo(
     () =>
       createTheme({
@@ -18,12 +18,14 @@ export const ModeProvider = ({ children }) => {
     [prefersMode],
   )
 
-  const handleColor = () => setColor((prev) => !prev)
   return (
     <ThemeProvider theme={theme}>
-      <ModeContext.Provider value={{ color, handleColor }}>
+      <ModeContext.Provider value={{ color, setColor }}>
         {children}
-      </ModeContext.Provider>{' '}
+      </ModeContext.Provider>
     </ThemeProvider>
   )
+}
+export const useMode = () => {
+  return useContext(ModeContext)
 }

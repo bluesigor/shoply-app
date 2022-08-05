@@ -1,110 +1,64 @@
-import {
-  Button,
-  Grid,
-  IconButton,
-  Paper,
-  Toolbar,
-  Typography,
-} from '@mui/material'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-import EditIcon from '@mui/icons-material/Edit'
+import { Link } from 'react-router-dom'
+import { Button, Paper, Toolbar, Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import { Box, Container } from '@mui/system'
+
 import { pages } from '../../utils/consts/navbarConsts'
 import Burger from './Burger'
-import useLogin from '../../utils/hooks/useLogin'
-import { Logout } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
+import LoginNavbar from './LoginNavbar'
+import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
+import { useMode } from '../../context/ModeContext'
+
 const Navbar = () => {
-  const { isLoggedIn, logout, inputData } = useLogin()
-  const { email, isAdmin } = inputData
+  const classes = useNavbarStyle()
+  const { color } = useMode()
+
   return (
-    <AppBar position="static" sx={{ background: 'none' }}>
-      <Paper>
-        <Container maxWidth="xl">
-          <Toolbar
-            sx={{
-              height: '115px',
-            }}
-          >
-            <Typography sx={{}} component="h2" variant="h4">
-              Shoply.
-            </Typography>
-            {pages.map((page) => {
-              return (
-                <Box
-                  key={page.link}
-                  sx={{
-                    flexGrow: 1,
-                    justifyContent: 'space-around',
-                    display: { xs: 'none', md: 'flex' },
-                  }}
-                >
-                  <Button
+    <>
+      <AppBar position="static" sx={{ background: 'inherit' }}>
+        <Paper>
+          <Container maxWidth="xl">
+            <Toolbar
+              p={0}
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: '115px',
+              }}
+            >
+              <Typography component="h2" variant="h4">
+                Shoply.
+              </Typography>
+              {pages.map((page) => {
+                return (
+                  <Box
+                    key={page.link}
                     sx={{
-                      fw: '300',
+                      flexGrow: 1,
+                      justifyContent: 'space-around',
+                      display: { xs: 'none', md: 'flex' },
                     }}
                   >
-                    <Link
+                    <Button
                       sx={{
-                        color: 'inherit',
+                        fw: '300',
+                        color: `${color ? 'white' : 'black'}`,
                       }}
-                      to={page.link}
                     >
-                      {page.title}
-                    </Link>
-                  </Button>
-                </Box>
-              )
-            })}
-            <Grid
-              md={2}
-              sx={{
-                flexGrow: 0.5,
-                justifyContent: 'space-between',
-              }}
-              display={{ xs: 'none', md: 'flex' }}
-              item
-            >
-              {isLoggedIn && isAdmin ? (
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
-              ) : (
-                <IconButton>
-                  <ShoppingCartOutlinedIcon />
-                </IconButton>
-              )}
-              {isLoggedIn ? (
-                <Button
-                  color="inherit"
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                >
-                  <Link to={isAdmin ? 'admin' : 'user'}>{email}</Link>
-                </Button>
-              ) : (
-                <Button
-                  color="inherit"
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                >
-                  <Link to="/login">Login</Link>
-                </Button>
-              )}
-              {isLoggedIn && (
-                <IconButton onClick={logout}>
-                  <Logout />
-                </IconButton>
-              )}
-            </Grid>
-            <Burger />
-          </Toolbar>
-        </Container>
-      </Paper>
-    </AppBar>
+                      <Link className={classes.link} to={page.link}>
+                        {page.title}
+                      </Link>
+                    </Button>
+                  </Box>
+                )
+              })}
+              <LoginNavbar />
+              <Burger />
+            </Toolbar>
+          </Container>
+        </Paper>
+      </AppBar>
+    </>
   )
 }
 

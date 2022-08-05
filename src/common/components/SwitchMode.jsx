@@ -2,9 +2,14 @@ import React from 'react'
 import { CssBaseline, FormControlLabel, Switch } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
-import { useMode } from '../../utils/hooks/useMode'
+
+import { useMode } from '../../context/ModeContext'
+
 const SwitchMode = () => {
-  const { color, handleColor } = useMode()
+  const { color, setColor } = useMode()
+  const handleColor = () => {
+    setColor((prev) => !prev)
+  }
   return (
     <>
       <CssBaseline />
@@ -16,7 +21,7 @@ const SwitchMode = () => {
         }}
         onClick={handleColor}
         control={<Switch />}
-        label={color ? <LightModeIcon /> : <ModeNightIcon />}
+        label={color ? <ModeNightIcon /> : <LightModeIcon />}
       />
     </>
   )

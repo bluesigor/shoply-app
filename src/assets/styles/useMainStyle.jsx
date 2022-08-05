@@ -9,4 +9,8 @@ export const useMainStyle = makeStyles((theme) => ({
       border: '2px solid black',
     },
   },
+  link: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 }))

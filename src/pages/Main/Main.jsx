@@ -1,12 +1,14 @@
-import { Button, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { Button, CardMedia, Grid, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+
 import main from '../../assets/images/mainLogo.svg'
 import { useMainStyle } from '../../assets/styles/useMainStyle'
-import { useMode } from '../../utils/hooks/useMode'
+import { useMode } from '../../context/ModeContext'
 
 const Main = () => {
-  const { color } = useMode()
   const classes = useMainStyle()
+  const { color } = useMode()
   return (
     <Grid
       mt={10}
@@ -31,10 +33,11 @@ const Main = () => {
             color: `${color ? 'white' : 'black'}`,
           }}
           size="lg"
-          href="products"
           className={classes.button}
         >
-          Shop Now{' '}
+          <Link className={classes.link} to="products">
+            Shop Now
+          </Link>
         </Button>
       </Grid>
       <Grid item>

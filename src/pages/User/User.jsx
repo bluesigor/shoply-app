@@ -1,16 +1,16 @@
+import React from 'react'
+
 import { Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
-import useLogin from '../../utils/hooks/useLogin'
+import { useUserDataContext } from '../../context/UserDataContext'
 
 const User = () => {
-  const { inputData } = useLogin()
-  const { email } = inputData
+  const { userData } = useUserDataContext()
   return (
     <Box>
       <Paper>
         <Typography m={6} variant="h4" component="p">
-          Welcome {email}
+          Welcome {userData.email}
         </Typography>
       </Paper>
     </Box>

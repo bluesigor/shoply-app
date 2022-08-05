@@ -1,14 +1,55 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Box, Button, Grid, Typography } from '@mui/material'
+
 import { useLoginStyle } from '../../../assets/styles/useLoginStyle'
-import useLogin from '../../../utils/hooks/useLogin'
+import { useUserDataContext } from '../../../context/UserDataContext'
 import AdminCheckbox from './AdminCheckbox'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
 
 const LoginForm = () => {
-  const { handleSubmit } = useLogin()
+  const navigate = useNavigate()
   const classes = useLoginStyle()
+
+  const { setUserData } = useUserDataContext()
+  const [inputData, setInputData] = useState({
+    email: '',
+    pass: '',
+    isAdmin: false,
+    error: false,
+  })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const { email, pass, isAdmin } = inputData
+
+    if (!email || !pass) {
+      setInputData((prev) => {
+        return {
+          ...prev,
+          error: true,
+        }
+      })
+    }
+
+    if (email && pass) {
+      setUserData({
+        isLoggedIn: true,
+        isAdmin: inputData.isAdmin,
+        userData: {
+          email: inputData.email,
+          nickname: inputData.email.toUpperCase(),
+        },
+      })
+      if (isAdmin) {
+        navigate('/admin')
+      } else {
+        navigate('/user')
+      }
+    }
+  }
   return (
     <Grid
       p={{ xs: '6', md: '12' }}
@@ -25,9 +66,17 @@ const LoginForm = () => {
         Login
       </Typography>
       <Box onSubmit={handleSubmit} component="form" className={classes.root}>
-        <EmailInput />
-        <PasswordInput />
-        <AdminCheckbox />
+        <EmailInput
+          value={inputData.email}
+          onChange={setInputData}
+          error={inputData.error}
+        />
+        <PasswordInput
+          value={inputData.pass}
+          onChange={setInputData}
+          error={inputData.error}
+        />
+        <AdminCheckbox value={inputData.isAdmin} onChange={setInputData} />
         <Button
           color="inherit"
           type="submit"

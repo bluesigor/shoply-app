@@ -1,6 +1,8 @@
 import { Grid } from '@mui/material'
 import React from 'react'
+
 import login from '../../../assets/images/login.svg'
+
 const LoginLogo = () => {
   return (
     <Grid

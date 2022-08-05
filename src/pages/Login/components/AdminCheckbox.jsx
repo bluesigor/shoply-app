@@ -1,12 +1,19 @@
-import { Grid, Input, Typography } from '@mui/material'
 import React from 'react'
-import { useLoginStyle } from '../../../assets/styles/useLoginStyle'
-import useLogin from '../../../utils/hooks/useLogin'
+import { Grid, Input, Typography } from '@mui/material'
 
-const AdminCheckbox = () => {
-  const { inputData, handleAdmin } = useLogin()
-  const { isAdmin } = inputData
+import { useLoginStyle } from '../../../assets/styles/useLoginStyle'
+
+const AdminCheckbox = ({ onChange, value }) => {
+  const handleAdmin = (e) => {
+    onChange((prev) => {
+      return {
+        ...prev,
+        isAdmin: !prev.isAdmin,
+      }
+    })
+  }
   const classes = useLoginStyle()
+
   return (
     <Grid flex={true} className={classes.admin} flexDirection="row">
       <Typography variant="p" component="h6" p={4}>
@@ -14,7 +21,7 @@ const AdminCheckbox = () => {
       </Typography>
       <Input
         onChange={handleAdmin}
-        value={isAdmin}
+        value={value}
         disableUnderline={true}
         type="checkbox"
       />
