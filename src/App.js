@@ -1,19 +1,19 @@
 import { BrowserRouter } from 'react-router-dom'
 import Routing from './assets/routes/Routing'
 
-import { ModeProvider } from './context/ModeContext'
 import { UserDataProvider } from './context/UserDataContext'
+import { UserSettingsProvider } from './context/UserSettingsContext'
 
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <UserDataProvider>
-          <ModeProvider>
+          <UserSettingsProvider>
             <Routing />
-          </ModeProvider>
-        </UserDataProvider>
-      </BrowserRouter>
+          </UserSettingsProvider>{' '}
+        </UserDataProvider>{' '}
+      </BrowserRouter>{' '}
     </div>
   )
 }

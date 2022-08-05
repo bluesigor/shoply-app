@@ -9,7 +9,6 @@ export const userDataReducerInitialState = {
 
 export const userDataReducer = (state = userDataReducerInitialState, action) => {
     switch (action.type) {
-
         case "setIsLoggedIn":
             return {
                 ...state,
@@ -24,6 +23,5 @@ export const userDataReducer = (state = userDataReducerInitialState, action) => 
             return userDataReducerInitialState;
         default:
             return state;
-
     }
 };

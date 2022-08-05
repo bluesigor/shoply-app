@@ -6,11 +6,9 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { Logout } from '@mui/icons-material'
 
 import { useUserDataContext } from '../../context/UserDataContext'
-import { useMode } from '../../context/ModeContext'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 
 const LoginNavbar = () => {
-  const { color } = useMode()
   const classes = useNavbarStyle()
   const { userData, setIsLoggedIn, isLoggedIn, isAdmin } = useUserDataContext()
 
@@ -37,7 +35,6 @@ const LoginNavbar = () => {
         <Button
           color="inherit"
           sx={{
-            color: `${color ? 'white' : 'black'}`,
             textAlign: 'center',
           }}
         >
@@ -49,7 +46,6 @@ const LoginNavbar = () => {
         <Button
           color="inherit"
           sx={{
-            color: `${color ? 'white' : 'black'}`,
             textAlign: 'center',
           }}
         >

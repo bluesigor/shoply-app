@@ -3,13 +3,15 @@ import { CssBaseline, FormControlLabel, Switch } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
 
-import { useMode } from '../../context/ModeContext'
+import { useUserSettingsContext } from '../../context/UserSettingsContext'
 
 const SwitchMode = () => {
-  const { color, setColor } = useMode()
-  const handleColor = () => {
-    setColor((prev) => !prev)
+  const { setUserThemeMode, theme } = useUserSettingsContext()
+
+  const handleMode = () => {
+    setUserThemeMode(!theme)
   }
+
   return (
     <>
       <CssBaseline />
@@ -19,9 +21,9 @@ const SwitchMode = () => {
           width: '200px',
           margin: '0px',
         }}
-        onClick={handleColor}
+        onClick={handleMode}
         control={<Switch />}
-        label={color ? <ModeNightIcon /> : <LightModeIcon />}
+        label={theme ? <ModeNightIcon /> : <LightModeIcon />}
       />
     </>
   )

@@ -7,11 +7,9 @@ import { pages } from '../../utils/consts/navbarConsts'
 import Burger from './Burger'
 import LoginNavbar from './LoginNavbar'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
-import { useMode } from '../../context/ModeContext'
 
 const Navbar = () => {
   const classes = useNavbarStyle()
-  const { color } = useMode()
 
   return (
     <>
@@ -41,8 +39,8 @@ const Navbar = () => {
                   >
                     <Button
                       sx={{
+                        color: 'inherit',
                         fw: '300',
-                        color: `${color ? 'white' : 'black'}`,
                       }}
                     >
                       <Link className={classes.link} to={page.link}>

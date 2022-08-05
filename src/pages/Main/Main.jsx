@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom'
 
 import main from '../../assets/images/mainLogo.svg'
 import { useMainStyle } from '../../assets/styles/useMainStyle'
-import { useMode } from '../../context/ModeContext'
 
 const Main = () => {
   const classes = useMainStyle()
-  const { color } = useMode()
   return (
     <Grid
       mt={10}
@@ -29,8 +27,8 @@ const Main = () => {
         </Typography>
         <Button
           sx={{
-            border: `${color ? '1px solid black' : '1px solid white'}`,
-            color: `${color ? 'white' : 'black'}`,
+            border: '1px solid black',
+            color: 'inherit',
           }}
           size="lg"
           className={classes.button}

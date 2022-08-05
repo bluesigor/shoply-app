@@ -5,6 +5,7 @@ import { Box } from '@mui/system'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { burgerPages } from '../../utils/consts/navbarConsts'
+import { useBurgerStyle } from '../../assets/styles/useBurgerStyle'
 
 const Burger = ({ color }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -15,6 +16,8 @@ const Burger = ({ color }) => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
+
+  const classes = useBurgerStyle()
 
   return (
     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -55,13 +58,7 @@ const Burger = ({ color }) => {
               onClick={handleCloseNavMenu}
             >
               <Button>
-                <Link
-                  sx={{
-                    textDeocration: 'none',
-                  }}
-                  color="red"
-                  to={page.link}
-                >
+                <Link className={classes.link} to={page.link}>
                   {page.title}
                 </Link>
               </Button>
