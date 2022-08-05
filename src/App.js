@@ -11,9 +11,9 @@ const App = () => {
         <UserDataProvider>
           <UserSettingsProvider>
             <Routing />
-          </UserSettingsProvider>{' '}
-        </UserDataProvider>{' '}
-      </BrowserRouter>{' '}
+          </UserSettingsProvider>
+        </UserDataProvider>
+      </BrowserRouter>
     </div>
   )
 }
