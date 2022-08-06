@@ -6,6 +6,7 @@ import { useUserDataContext } from '../../context/UserDataContext'
 
 const User = () => {
   const { userData } = useUserDataContext()
+
   return (
     <Box>
       <Paper>

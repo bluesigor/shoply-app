@@ -1,5 +1,5 @@
 export const userSettingsInitialState = {
-  theme: false,
+  theme: 'light',
 }
 export const userSettingsReducer = (
   state = userSettingsInitialState,

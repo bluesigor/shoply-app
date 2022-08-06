@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { burgerPages } from '../../utils/consts/navbarConsts'
 import { useBurgerStyle } from '../../assets/styles/useBurgerStyle'
 
-const Burger = ({ color }) => {
+const Burger = () => {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)

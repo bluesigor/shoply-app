@@ -7,6 +7,7 @@ import { useMainStyle } from '../../assets/styles/useMainStyle'
 
 const Main = () => {
   const classes = useMainStyle()
+
   return (
     <Grid
       mt={10}

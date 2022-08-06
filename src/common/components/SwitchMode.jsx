@@ -8,9 +8,8 @@ import { useUserSettingsContext } from '../../context/UserSettingsContext'
 const SwitchMode = () => {
   const { setUserThemeMode, theme } = useUserSettingsContext()
 
-  const handleMode = () => {
-    setUserThemeMode(!theme)
-  }
+  const handleMode = () =>
+    theme === 'dark' ? setUserThemeMode('light') : setUserThemeMode('dark')
 
   return (
     <>
@@ -23,7 +22,7 @@ const SwitchMode = () => {
         }}
         onClick={handleMode}
         control={<Switch />}
-        label={theme ? <ModeNightIcon /> : <LightModeIcon />}
+        label={theme === 'light' ? <LightModeIcon /> : <ModeNightIcon />}
       />
     </>
   )

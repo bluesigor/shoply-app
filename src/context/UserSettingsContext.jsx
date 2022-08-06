@@ -12,29 +12,29 @@ export const UserSettingsProvider = ({ children }) => {
     userSettingsReducer,
     userSettingsInitialState,
   )
-  const prefersMode = useMediaQuery(
-    `(prefers-color-scheme: ${state.theme ? 'light' : 'dark'})`,
-  )
+
+  const prefersMode = useMediaQuery(`(prefers-color-scheme: ${state.theme})`)
+
   const mode = useMemo(
     () =>
       createTheme({
         palette: {
-          mode: prefersMode ? 'dark' : 'light',
+          mode: prefersMode ? 'light' : 'dark',
         },
       }),
     [prefersMode],
   )
-  const useSettingsValue = {
+
+  const userSettingsValue = {
     ...state,
     setUserThemeMode: (value) =>
       dispatch({ type: 'setUserThemeMode', payload: value }),
   }
+
   return (
-    <ThemeProvider theme={mode}>
-      <UserSettingsContext.Provider value={useSettingsValue}>
-        {children}
-      </UserSettingsContext.Provider>
-    </ThemeProvider>
+    <UserSettingsContext.Provider value={userSettingsValue}>
+      <ThemeProvider theme={mode}>{children}</ThemeProvider>
+    </UserSettingsContext.Provider>
   )
 }
 export const useUserSettingsContext = () => {
