@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react'
 import translate from 'translate'
+import { useUserSettingsContext } from '../../context/UserSettingsContext'
 
 translate.engine = 'google'
 translate.key = process.env.GOOGLE_KEY
 
-const Localizator = ({ str, lang }) => {
+const Localizator = ({ str }) => {
   const [text, setText] = useState(str)
+  const { language } = useUserSettingsContext()
 
   useEffect(() => {
-    async function TranslateText() {
-      const res = await translate(str, lang)
-      return setText(res)
+    const TranslateText = async () => {
+      const res = await translate(str, language)
+      setText(res)
     }
+
     TranslateText()
-  }, [lang, str])
+  }, [language, str])
 
   return <>{text}</>
 }

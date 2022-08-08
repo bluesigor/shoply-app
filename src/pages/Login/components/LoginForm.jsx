@@ -8,14 +8,12 @@ import { useUserDataContext } from '../../../context/UserDataContext'
 import AdminCheckbox from './AdminCheckbox'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
-import { useUserSettingsContext } from '../../../context/UserSettingsContext'
 import Localizator from '../../../common/components/Localizator'
 
 const LoginForm = () => {
   const navigate = useNavigate()
   const classes = useLoginStyle()
 
-  const { language } = useUserSettingsContext()
   const { setUserData } = useUserDataContext()
   const [inputData, setInputData] = useState({
     email: '',
@@ -90,7 +88,7 @@ const LoginForm = () => {
           }}
           variant="outlined"
         >
-          <Localizator lang={language} str="Login" />
+          <Localizator str="Login" />
         </Button>
       </Box>
     </Grid>

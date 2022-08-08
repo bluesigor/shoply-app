@@ -7,12 +7,10 @@ import { Link } from 'react-router-dom'
 
 import { burgerPages } from '../../utils/consts/navbarConsts'
 import { useBurgerStyle } from '../../assets/styles/useBurgerStyle'
-import { useUserSettingsContext } from '../../context/UserSettingsContext'
 import Localizator from './Localizator'
 
 const Burger = () => {
   const [anchorElNav, setAnchorElNav] = useState(null)
-  const { language } = useUserSettingsContext()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -64,7 +62,7 @@ const Burger = () => {
             >
               <Button>
                 <Link className={classes.link} to={page.link}>
-                  <Localizator str={page.title} lang={language} />
+                  <Localizator str={page.title} />
                 </Link>
               </Button>
             </MenuItem>

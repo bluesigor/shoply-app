@@ -1,6 +1,6 @@
 export const userSettingsInitialState = {
   theme: 'light',
-  language: '',
+  language: 'en',
 }
 export const userSettingsReducer = (
   state = userSettingsInitialState,

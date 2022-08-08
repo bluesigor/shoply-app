@@ -4,19 +4,18 @@ import { Link } from 'react-router-dom'
 
 import main from '../../assets/images/mainLogo.svg'
 import { useMainStyle } from '../../assets/styles/useMainStyle'
-import { useUserSettingsContext } from '../../context/UserSettingsContext'
 import Localizator from '../../common/components/Localizator'
 
 const Main = () => {
   const classes = useMainStyle()
-  const { language } = useUserSettingsContext()
 
   return (
     <Grid
       sx={{
-        margin: '110px',
         justifyContent: 'space-between',
       }}
+      mt={10}
+      mb={17}
       className={classes.root}
       p={4}
       rowSpacing={2}
@@ -28,10 +27,7 @@ const Main = () => {
           Logitech G Pro X Superlight
         </Typography>
         <Typography mb={2} variant="subtitle1">
-          <Localizator
-            lang={language}
-            str="Transforming shopping into an experience."
-          />
+          <Localizator str="Transforming shopping into an experience." />
         </Typography>
         <Button
           sx={{
@@ -42,7 +38,7 @@ const Main = () => {
           className={classes.button}
         >
           <Link className={classes.link} to="products">
-            <Localizator lang={language} str="Shop Now" />
+            <Localizator str="Shop Now" />
           </Link>
         </Button>
       </Grid>
