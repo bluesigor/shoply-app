@@ -2,6 +2,7 @@ import React from 'react'
 import { Paper, Typography } from '@mui/material'
 
 import { useUserDataContext } from '../../context/UserDataContext'
+import Localizator from '../../common/components/Localizator'
 
 const Admin = () => {
   const { userData } = useUserDataContext()
@@ -13,7 +14,7 @@ const Admin = () => {
       }}
     >
       <Typography variant="p" component="h4">
-        Welcome {userData.nickname} Admin
+        <Localizator str={`Welcome ${userData.nickname} Admin`} />
       </Typography>
     </Paper>
   )

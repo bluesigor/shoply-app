@@ -1,35 +1,26 @@
 import React from 'react'
 import { Box, Grid, IconButton, Typography } from '@mui/material'
-import { makeStyles } from '@mui/styles'
 
 import fb from '../../assets/images/facebook.svg'
 import ig from '../../assets/images/instagram.svg'
 import tw from '../../assets/images/twitter.svg'
 import yt from '../../assets/images/youtube.svg'
 import SwitchMode from './SwitchMode'
-
-const useStyle = makeStyles((theme) => ({
-  root: {
-    justifyContent: 'space-between',
-    padding: '80px',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-}))
+import SwitchLocalization from './SwitchLocalization'
+import { useFooterStyle } from '../../assets/styles/useFooterStyle'
 
 const Footer = () => {
-  const classes = useStyle()
+  const classes = useFooterStyle()
+
   return (
     <Grid
       boxShadow="-1px -1px 4px 0px rgb(0 0 0 / 87%);"
       position={{
-        xs: 'static !important',
+        xs: 'static',
         sm: 'static',
-        lg: 'fixed',
-        md: 'static',
+        lg: '',
       }}
-      bottom="0"
-      p={8}
+      p={4}
       container
       className={classes.root}
     >
@@ -42,6 +33,7 @@ const Footer = () => {
           © Copyright 2021. Created by OurTeam
         </Typography>
       </Box>
+      <SwitchLocalization />
       <Box p={2}>
         <IconButton>
           <img src={fb} alt="fb" />

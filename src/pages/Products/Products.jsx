@@ -1,7 +1,13 @@
-import React from 'react'
+import { Typography } from '@mui/material'
+
+import Localizator from '../../common/components/Localizator'
 
 const Products = () => {
-  return <div> Products </div>
+  return (
+    <Typography>
+      <Localizator str="Products" />
+    </Typography>
+  )
 }
 
 export default Products

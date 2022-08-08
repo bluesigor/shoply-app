@@ -4,11 +4,14 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Box } from '@mui/system'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import { burgerPages } from '../../utils/consts/navbarConsts'
 import { useBurgerStyle } from '../../assets/styles/useBurgerStyle'
+import Localizator from './Localizator'
 
 const Burger = () => {
   const [anchorElNav, setAnchorElNav] = useState(null)
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -59,7 +62,7 @@ const Burger = () => {
             >
               <Button>
                 <Link className={classes.link} to={page.link}>
-                  {page.title}
+                  <Localizator str={page.title} />
                 </Link>
               </Button>
             </MenuItem>

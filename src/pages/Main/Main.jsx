@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom'
 
 import main from '../../assets/images/mainLogo.svg'
 import { useMainStyle } from '../../assets/styles/useMainStyle'
+import Localizator from '../../common/components/Localizator'
 
 const Main = () => {
   const classes = useMainStyle()
 
   return (
     <Grid
+      sx={{
+        justifyContent: 'space-between',
+      }}
       mt={10}
-      mb={10}
+      mb={17}
       className={classes.root}
       p={4}
       rowSpacing={2}
@@ -23,8 +27,7 @@ const Main = () => {
           Logitech G Pro X Superlight
         </Typography>
         <Typography mb={2} variant="subtitle1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vestibulum
-          nibh erat
+          <Localizator str="Transforming shopping into an experience." />
         </Typography>
         <Button
           sx={{
@@ -35,7 +38,7 @@ const Main = () => {
           className={classes.button}
         >
           <Link className={classes.link} to="products">
-            Shop Now
+            <Localizator str="Shop Now" />
           </Link>
         </Button>
       </Grid>

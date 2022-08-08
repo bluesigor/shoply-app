@@ -1,9 +1,10 @@
 import React from 'react'
+import Localizator from '../../common/components/Localizator'
 
 const Fallback = () => {
   return (
     <main style={{ padding: '1rem' }}>
-      <p>There's nothing here!</p>
+      <Localizator str="There's nothing here!" />
     </main>
   )
 }

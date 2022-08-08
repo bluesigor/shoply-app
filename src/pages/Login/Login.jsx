@@ -7,7 +7,7 @@ import LoginLogo from './components/LoginLogo'
 const Login = () => {
   return (
     <Container>
-      <Box p={8} display="flex">
+      <Box p={6} display="flex">
         <LoginLogo />
         <LoginForm />
       </Box>

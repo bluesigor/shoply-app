@@ -1,5 +1,6 @@
 export const userSettingsInitialState = {
   theme: 'light',
+  language: 'en',
 }
 export const userSettingsReducer = (
   state = userSettingsInitialState,
@@ -10,6 +11,11 @@ export const userSettingsReducer = (
       return {
         ...state,
         theme: action.payload,
+      }
+    case 'setUserLanguage':
+      return {
+        ...state,
+        language: action.payload,
       }
     default:
       return state

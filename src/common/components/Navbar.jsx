@@ -7,6 +7,7 @@ import { pages } from '../../utils/consts/navbarConsts'
 import Burger from './Burger'
 import LoginNavbar from './LoginNavbar'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
+import Localizator from './Localizator'
 
 const Navbar = () => {
   const classes = useNavbarStyle()
@@ -44,7 +45,7 @@ const Navbar = () => {
                       }}
                     >
                       <Link className={classes.link} to={page.link}>
-                        {page.title}
+                        <Localizator str={page.title} />
                       </Link>
                     </Button>
                   </Box>

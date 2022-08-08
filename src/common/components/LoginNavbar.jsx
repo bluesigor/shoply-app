@@ -7,6 +7,7 @@ import { Logout } from '@mui/icons-material'
 
 import { useUserDataContext } from '../../context/UserDataContext'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
+import Localizator from './Localizator'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
@@ -50,7 +51,7 @@ const LoginNavbar = () => {
           }}
         >
           <Link className={classes.link} to="/login">
-            Login
+            <Localizator str="Login" />
           </Link>
         </Button>
       )}
