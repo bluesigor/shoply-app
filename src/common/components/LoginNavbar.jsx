@@ -7,10 +7,13 @@ import { Logout } from '@mui/icons-material'
 
 import { useUserDataContext } from '../../context/UserDataContext'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
+import { useUserSettingsContext } from '../../context/UserSettingsContext'
+import Localizator from './Localizator'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
   const { userData, setIsLoggedIn, isLoggedIn, isAdmin } = useUserDataContext()
+  const { language } = useUserSettingsContext()
 
   return (
     <Grid
@@ -50,7 +53,7 @@ const LoginNavbar = () => {
           }}
         >
           <Link className={classes.link} to="/login">
-            Login
+            <Localizator lang={language} str="Login" />
           </Link>
         </Button>
       )}

@@ -24,11 +24,12 @@ export const UserSettingsProvider = ({ children }) => {
       }),
     [prefersMode],
   )
-
   const userSettingsValue = {
     ...state,
     setUserThemeMode: (value) =>
       dispatch({ type: 'setUserThemeMode', payload: value }),
+    setUserLanguage: (lang) =>
+      dispatch({ type: 'setUserLanguage', payload: lang }),
   }
 
   return (
