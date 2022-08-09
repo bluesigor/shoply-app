@@ -14,7 +14,6 @@ const Localizator = ({ str }) => {
       const res = await translate(str, language)
       setText(res)
     }
-
     TranslateText()
   }, [language, str])
 

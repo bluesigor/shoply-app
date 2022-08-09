@@ -1,12 +1,24 @@
-import { Typography } from '@mui/material'
+import { Container } from '@mui/material'
 
-import Localizator from '../../common/components/Localizator'
+import ProductsLoading from './components/ProductsLoading'
+import ProductsError from './components/ProductsError'
 
 const Products = () => {
   return (
-    <Typography>
-      <Localizator str="Products" />
-    </Typography>
+    <>
+      <Container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}
+        maxWidth="lg"
+      >
+        <ProductsLoading />
+        <ProductsError />
+      </Container>
+    </>
   )
 }
 

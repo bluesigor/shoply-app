@@ -18,6 +18,7 @@ export const UserDataProvider = ({ children }) => {
       dispatch({ type: 'setIsLoggedIn', payload: value }),
     setUserData: (user) => dispatch({ type: 'setUserData', payload: user }),
   }
+
   return (
     <UserDataContext.Provider value={userDataValue}>
       {children}
