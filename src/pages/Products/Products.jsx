@@ -4,7 +4,12 @@ import { useGetProducts } from '../../services/getProducts/getProducts'
 import ProductCard from './components/ProductCard'
 
 const Products = () => {
-  const { prodsData } = useGetProducts()
+  const { productsData } = useGetProducts()
+
+  const product = productsData.map((item) => {
+    const { id, title, image } = item
+    return <ProductCard key={id} title={title} image={image} />
+  })
 
   return (
     <Container maxWidth="lg">
@@ -16,10 +21,7 @@ const Products = () => {
           flexWrap: 'wrap',
         }}
       >
-        {prodsData.map((item) => {
-          const { id, title, image } = item
-          return <ProductCard key={id} title={title} image={image} />
-        })}
+        {product}
       </Stack>
     </Container>
   )

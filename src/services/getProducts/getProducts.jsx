@@ -6,14 +6,14 @@ import { useNotificationContext } from '../../context/NotificationContext'
 import { productsURL } from '../../utils/consts/productsConsts'
 
 export const useGetProducts = () => {
-  const [prodsData, setProdsData] = useState([])
+  const [productsData, setProductsData] = useState([])
   const { setNotificationOpen } = useNotificationContext()
 
   useEffect(() => {
     const getProductsData = async () => {
       try {
         const response = await axios.get(productsURL)
-        setProdsData(response.data)
+        setProductsData(response.data)
       } catch (e) {
         setNotificationOpen(<Localizator str="Something went wrong" />)
       }
@@ -21,5 +21,5 @@ export const useGetProducts = () => {
 
     getProductsData()
   }, [])
-  return { prodsData }
+  return { productsData }
 }
