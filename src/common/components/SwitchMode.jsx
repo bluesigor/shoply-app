@@ -19,9 +19,7 @@ const SwitchMode = () => {
           width: '200px',
           margin: '0px',
         }}
-        onClick={() => {
-          handleMode()
-        }}
+        onClick={handleMode}
         control={<Switch />}
         label={theme === 'light' ? <LightModeIcon /> : <ModeNightIcon />}
       />
