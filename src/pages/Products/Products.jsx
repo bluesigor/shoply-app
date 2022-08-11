@@ -1,24 +1,27 @@
-import { Container } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 
-import ProductsLoading from './components/ProductsLoading'
-import ProductsError from './components/ProductsError'
+import { useGetProducts } from '../../services/getProducts/getProducts'
+import ProductCard from './components/ProductCard'
 
 const Products = () => {
+  const { prodsData } = useGetProducts()
+
   return (
-    <>
-      <Container
+    <Container maxWidth="lg">
+      <Stack
         sx={{
           display: 'flex',
           alignItems: 'center',
           flexDirection: 'row',
           flexWrap: 'wrap',
         }}
-        maxWidth="lg"
       >
-        <ProductsLoading />
-        <ProductsError />
-      </Container>
-    </>
+        {prodsData.map((item) => {
+          const { id, title, image } = item
+          return <ProductCard key={id} title={title} image={image} />
+        })}
+      </Stack>
+    </Container>
   )
 }
 

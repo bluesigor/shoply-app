@@ -11,6 +11,7 @@ const EmailInput = ({ value, onChange, error }) => {
       }
     })
   }
+
   return (
     <TextField
       error={error}

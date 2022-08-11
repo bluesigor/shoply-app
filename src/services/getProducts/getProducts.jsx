@@ -1,18 +1,25 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
+import Localizator from '../../common/components/Localizator'
+import { useNotificationContext } from '../../context/NotificationContext'
 import { productsURL } from '../../utils/consts/productsConsts'
 
 export const useGetProducts = () => {
   const [prodsData, setProdsData] = useState([])
-  const [prodsErr, setProdsErr] = useState(false)
+  const { setNotificationOpen } = useNotificationContext()
 
   useEffect(() => {
-    axios
-      .get(productsURL)
-      .then((res) => setProdsData(res.data))
-      .catch((error) => setProdsErr(error))
-  }, [])
+    const getProductsData = async () => {
+      try {
+        const response = await axios.get(productsURL)
+        setProdsData(response.data)
+      } catch (e) {
+        setNotificationOpen(<Localizator str="Something went wrong" />)
+      }
+    }
 
-  return { prodsData, prodsErr }
+    getProductsData()
+  }, [])
+  return { prodsData }
 }

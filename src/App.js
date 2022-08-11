@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import Routing from './assets/routes/Routing'
-import { ProductsDataProvider } from './context/ProductsDataContext'
+import { NotificationProvider } from './context/NotificationContext'
 
 import { UserDataProvider } from './context/UserDataContext'
 import { UserSettingsProvider } from './context/UserSettingsContext'
@@ -9,13 +9,13 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <UserDataProvider>
-          <UserSettingsProvider>
-            <ProductsDataProvider>
+        <NotificationProvider>
+          <UserDataProvider>
+            <UserSettingsProvider>
               <Routing />
-            </ProductsDataProvider>
-          </UserSettingsProvider>
-        </UserDataProvider>
+            </UserSettingsProvider>
+          </UserDataProvider>
+        </NotificationProvider>
       </BrowserRouter>
     </div>
   )

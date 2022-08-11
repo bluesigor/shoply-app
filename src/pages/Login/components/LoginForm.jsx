@@ -45,6 +45,7 @@ const LoginForm = () => {
           nickname: inputData.email.toUpperCase(),
         },
       })
+
       if (isAdmin) {
         navigate('/admin')
       } else {

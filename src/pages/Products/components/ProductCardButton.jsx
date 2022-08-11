@@ -1,19 +1,26 @@
 import React from 'react'
 import { ShoppingBag } from '@mui/icons-material'
-import { Button, Grid, IconButton } from '@mui/material'
+import { Box, Button, IconButton } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
+import { useNotificationContext } from '../../../context/NotificationContext'
 
 const ProductCardButton = () => {
+  const { setNotificationOpen } = useNotificationContext()
+
+  const handleMessage = () => {
+    setNotificationOpen(<Localizator str="Item was added to your basket" />)
+  }
+
   return (
-    <Grid display="flex" flexDirection="row" justifyContent="space-between">
-      <Button color="inherit">
+    <Box display="flex" flexDirection="row" justifyContent="space-between">
+      <Button>
         <Localizator str="Details" />
       </Button>
-      <IconButton>
+      <IconButton onClick={handleMessage}>
         <ShoppingBag />
       </IconButton>
-    </Grid>
+    </Box>
   )
 }
 
