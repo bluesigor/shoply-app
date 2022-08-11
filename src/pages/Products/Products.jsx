@@ -1,12 +1,29 @@
-import { Typography } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 
-import Localizator from '../../common/components/Localizator'
+import { useGetProducts } from '../../services/getProducts/getProducts'
+import ProductCard from './components/ProductCard'
 
 const Products = () => {
+  const { productsData } = useGetProducts()
+
+  const product = productsData.map((item) => {
+    const { id, title, image } = item
+    return <ProductCard key={id} title={title} image={image} />
+  })
+
   return (
-    <Typography>
-      <Localizator str="Products" />
-    </Typography>
+    <Container maxWidth="lg">
+      <Stack
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}
+      >
+        {product}
+      </Stack>
+    </Container>
   )
 }
 

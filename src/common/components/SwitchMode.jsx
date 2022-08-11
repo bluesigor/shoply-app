@@ -7,7 +7,6 @@ import { useUserSettingsContext } from '../../context/UserSettingsContext'
 
 const SwitchMode = () => {
   const { setUserThemeMode, theme } = useUserSettingsContext()
-
   const handleMode = () =>
     theme === 'dark' ? setUserThemeMode('light') : setUserThemeMode('dark')
 

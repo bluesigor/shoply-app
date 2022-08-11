@@ -11,6 +11,7 @@ const PasswordInput = ({ value, error, onChange }) => {
       }
     })
   }
+
   return (
     <TextField
       error={error}

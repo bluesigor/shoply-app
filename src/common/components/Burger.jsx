@@ -60,7 +60,11 @@ const Burger = () => {
               }}
               onClick={handleCloseNavMenu}
             >
-              <Button>
+              <Button
+                sx={{
+                  textDecoration: 'none',
+                }}
+              >
                 <Link className={classes.link} to={page.link}>
                   <Localizator str={page.title} />
                 </Link>

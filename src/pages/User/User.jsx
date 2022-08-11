@@ -1,7 +1,7 @@
 import React from 'react'
-
 import { Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+
 import { useUserDataContext } from '../../context/UserDataContext'
 import Localizator from '../../common/components/Localizator'
 

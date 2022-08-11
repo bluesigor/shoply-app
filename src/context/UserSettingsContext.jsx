@@ -25,9 +25,10 @@ export const UserSettingsProvider = ({ children }) => {
     [prefersMode],
   )
   const userSettingsValue = {
-    ...state,
+    theme: state.theme,
     setUserThemeMode: (value) =>
       dispatch({ type: 'setUserThemeMode', payload: value }),
+    language: state.language,
     setUserLanguage: (lang) =>
       dispatch({ type: 'setUserLanguage', payload: lang }),
   }
