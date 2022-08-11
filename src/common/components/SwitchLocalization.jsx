@@ -12,26 +12,24 @@ const SwitchLocalization = () => {
   }
 
   return (
-    <>
-      <FormControl sx={{ m: 4, minWidth: 120 }} size="small">
-        <InputLabel>
-          <Localizator str="Language" />
-        </InputLabel>
-        <Select
-          defaultValue="en"
-          value={language}
-          onChange={handleLanguageChoice}
-          label="Language"
-        >
-          <MenuItem value="uk">
-            <Localizator str="Ukrainian" />
-          </MenuItem>
-          <MenuItem value="en">
-            <Localizator str="English" />
-          </MenuItem>
-        </Select>
-      </FormControl>
-    </>
+    <FormControl sx={{ m: 4, minWidth: 120 }} size="small">
+      <InputLabel>
+        <Localizator str="Language" />
+      </InputLabel>
+      <Select
+        defaultValue="en"
+        value={language}
+        onChange={handleLanguageChoice}
+        label="Language"
+      >
+        <MenuItem value="uk">
+          <Localizator str="Ukrainian" />
+        </MenuItem>
+        <MenuItem value="en">
+          <Localizator str="English" />
+        </MenuItem>
+      </Select>
+    </FormControl>
   )
 }
 

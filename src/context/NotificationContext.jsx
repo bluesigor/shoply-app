@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from 'react'
 
+import Notification from '../common/components/Notification'
 import {
   notificationInitialState,
   notificationReducer,
@@ -16,7 +17,10 @@ export const NotificationProvider = ({ children }) => {
   const notificationValue = {
     message: state.message,
     setNotificationOpen: (value) => {
-      dispatch({ type: 'setNotificationOpen', payload: value })
+      dispatch({
+        type: 'setNotificationOpen',
+        payload: value,
+      })
     },
 
     open: state.open,
@@ -27,6 +31,7 @@ export const NotificationProvider = ({ children }) => {
 
   return (
     <NotificationContext.Provider value={notificationValue}>
+      <Notification />
       {children}
     </NotificationContext.Provider>
   )
