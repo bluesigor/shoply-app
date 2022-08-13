@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import translate from 'translate'
+
 import { useUserSettingsContext } from '../../context/UserSettingsContext'
 
 translate.engine = 'google'
@@ -15,7 +16,7 @@ const Localizator = ({ str }) => {
       setText(res)
     }
     TranslateText()
-  }, [language, str])
+  }, [str, language])
 
   return <>{text}</>
 }

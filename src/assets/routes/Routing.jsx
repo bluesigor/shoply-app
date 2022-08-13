@@ -9,6 +9,7 @@ import Fallback from '../../pages/Fallback/Fallback'
 import Admin from '../../pages/Admin/Admin'
 import Layout from './Layout'
 import RequireAuth from '../../common/components/RequireAuth'
+import Product from '../../pages/Product/Product'
 
 const Routing = () => {
   return (
@@ -17,6 +18,7 @@ const Routing = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="products" element={<Products />} />
+          <Route path="/products/:id" element={<Product />} />
           <Route element={<RequireAuth />}>
             <Route path="user" element={<User />} />
             <Route path="admin" element={<Admin />} />

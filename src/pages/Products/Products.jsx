@@ -8,7 +8,7 @@ const Products = () => {
 
   const product = productsData.map((item) => {
     const { id, title, image } = item
-    return <ProductCard key={id} title={title} image={image} />
+    return <ProductCard key={id} id={id} title={title} image={image} />
   })
 
   return (
