@@ -10,7 +10,10 @@ const Admin = () => {
   return (
     <Paper
       sx={{
-        margin: '130px',
+        margin: '30px',
+        position: 'relative',
+        minHeight: '70vh',
+        display: 'flex',
       }}
     >
       <Typography variant="p" component="h4">

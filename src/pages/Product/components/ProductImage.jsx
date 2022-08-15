@@ -1,12 +1,7 @@
+import React from 'react'
 import { Box } from '@mui/material'
 
-import React from 'react'
-
-import { useSingleProductContext } from '../../../context/SingleProductContext'
-const ProductLogo = () => {
-  const { product } = useSingleProductContext()
-  const { image } = product
-
+const ProductImage = ({ image }) => {
   return (
     <Box
       sx={{
@@ -26,4 +21,4 @@ const ProductLogo = () => {
   )
 }
 
-export default ProductLogo
+export default ProductImage

@@ -2,14 +2,10 @@ import React from 'react'
 import { Box, Button, Rating, Stack, Typography } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
-import { useSingleProductContext } from '../../../context/SingleProductContext'
 import { useNotificationContext } from '../../../context/NotificationContext'
 
-const ProductInfo = () => {
-  const { product } = useSingleProductContext()
+const ProductInfo = ({ product }) => {
   const { setNotificationOpen } = useNotificationContext()
-
-  const { title, price, rating, description, category } = product
 
   return (
     <Box margin={{ xs: '20px', md: '20px' }} position="relative">
@@ -21,8 +17,8 @@ const ProductInfo = () => {
         p="4"
         component="p"
       >
-        <Localizator str={title} />
-        (<Localizator str={category} />)
+        <Localizator str={product.title} />
+        (<Localizator str={product.category} />)
       </Typography>
       <Box display="flex" flexDirection="column" maxWidth="100%">
         <Typography
@@ -30,13 +26,13 @@ const ProductInfo = () => {
           fontWeight={400}
           mt={4}
         >
-          <Localizator str={description} />
+          <Localizator str={product.description} />
         </Typography>
         <Rating
           onClick={() =>
             setNotificationOpen('We really appreciate your feedback!')
           }
-          value={rating.rate}
+          value={product.rating.rate}
           sx={{
             marginTop: '20px',
           }}
@@ -49,7 +45,7 @@ const ProductInfo = () => {
           justifyContent="space-between"
         >
           <Typography fontWeight={700}>
-            <Localizator str="Price" /> {price}$
+            <Localizator str="Price" /> {product.price}$
           </Typography>
           <Stack display="flex" alignItems="center" direction="row">
             <Button size="small" color="inherit" variant="outlined">

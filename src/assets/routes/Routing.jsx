@@ -18,7 +18,7 @@ const Routing = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="products" element={<Products />} />
-          <Route path="/products/:id" element={<Product />} />
+          <Route path="products/:productId" element={<Product />} />
           <Route element={<RequireAuth />}>
             <Route path="user" element={<User />} />
             <Route path="admin" element={<Admin />} />
