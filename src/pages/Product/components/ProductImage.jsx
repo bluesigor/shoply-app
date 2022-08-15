@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
-const ProductImage = ({ image }) => {
+const ProductImage = ({ image, alt }) => {
   return (
     <Box
       sx={{
@@ -15,7 +15,7 @@ const ProductImage = ({ image }) => {
           height: '320px',
         }}
         src={image}
-        alt="ProductLogo"
+        alt={alt}
       />
     </Box>
   )
