@@ -1,4 +1,4 @@
-import React from 'react'
+import { useParams } from 'react-router-dom'
 import { Container, Stack } from '@mui/material'
 
 import ProductInfo from './components/ProductInfo'
@@ -6,7 +6,9 @@ import ProductImage from './components/ProductImage'
 import useSingleProduct from '../../services/useSingleProduct'
 
 const Product = () => {
-  const { singleProduct } = useSingleProduct()
+  const { productId } = useParams()
+
+  const { singleProduct } = useSingleProduct({ productId })
 
   if (!singleProduct) {
     return null

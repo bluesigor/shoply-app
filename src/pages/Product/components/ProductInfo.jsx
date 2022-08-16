@@ -1,12 +1,10 @@
 import React from 'react'
-import { Box, Button, Rating, Stack, Typography } from '@mui/material'
+import { Box, Button, Stack, Typography } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
-import { useNotificationContext } from '../../../context/NotificationContext'
+import ProductRate from './ProductRate'
 
 const ProductInfo = ({ product }) => {
-  const { setNotificationOpen } = useNotificationContext()
-
   return (
     <Box margin={{ xs: '20px', md: '20px' }} position="relative">
       <Typography
@@ -28,15 +26,7 @@ const ProductInfo = ({ product }) => {
         >
           <Localizator str={product.description} />
         </Typography>
-        <Rating
-          onClick={() =>
-            setNotificationOpen('We really appreciate your feedback!')
-          }
-          value={product.rating.rate}
-          sx={{
-            marginTop: '20px',
-          }}
-        />
+        <ProductRate rating={product.rating.rate} />
         <Stack
           alignItems="flex-start"
           mt={10}

@@ -1,9 +1,7 @@
-import { useParams } from 'react-router-dom'
 import { useGetProducts } from './getProducts/getProducts'
 
-const useSingleProduct = () => {
+const useSingleProduct = ({ productId }) => {
   const { productsData } = useGetProducts()
-  const { productId } = useParams()
 
   const singleProduct = productsData.find(
     (product) => product.id === +productId,
