@@ -13,7 +13,11 @@ export const burgerPages = [{
         title: 'Products'
     },
     {
+        link: 'shoppingCard',
+        title: 'Shopping Card'
+    },
+    {
         link: 'login',
         title: 'Login'
-    }
+    },
 ];

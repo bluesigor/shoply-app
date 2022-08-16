@@ -29,7 +29,14 @@ const LoginNavbar = () => {
         </IconButton>
       ) : (
         <IconButton>
-          <ShoppingCartOutlinedIcon />
+          <Link
+            style={{
+              color: 'inherit',
+            }}
+            to="shoppingCard"
+          >
+            <ShoppingCartOutlinedIcon />
+          </Link>
         </IconButton>
       )}
       {isLoggedIn ? (
