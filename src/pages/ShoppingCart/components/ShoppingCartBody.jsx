@@ -1,15 +1,14 @@
 import React from 'react'
-import { Add, Remove } from '@mui/icons-material'
+import { Add, Delete, Remove } from '@mui/icons-material'
 import { IconButton, TableBody, TableCell, TableRow } from '@mui/material'
 
 import { useGetProducts } from '../../../services/getProducts/getProducts'
 import Localizator from '../../../common/components/Localizator'
-import RemoveCard from './RemoveCartItem'
 import ShoppingCartSummary from './ShoppingCartSummary'
 
 const ShoppingCardBody = () => {
-  const { productsData } = useGetProducts() // example
-  const products = productsData.slice(0, 4) // example
+  const { productsData } = useGetProducts()
+  const products = productsData.slice(0, 4)
 
   return (
     <TableBody>
@@ -48,7 +47,9 @@ const ShoppingCardBody = () => {
               </IconButton>
             </TableCell>
             <TableCell align="right">
-              <RemoveCard />
+              <IconButton>
+                <Delete />
+              </IconButton>
             </TableCell>
           </TableRow>
         )
