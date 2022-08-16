@@ -9,7 +9,7 @@ import Fallback from '../../pages/Fallback/Fallback'
 import Admin from '../../pages/Admin/Admin'
 import Layout from './Layout'
 import RequireAuth from '../../common/components/RequireAuth'
-
+import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart'
 const Routing = () => {
   return (
     <>
@@ -21,6 +21,7 @@ const Routing = () => {
             <Route path="user" element={<User />} />
             <Route path="admin" element={<Admin />} />
           </Route>
+          <Route path="shoppingCard" element={<ShoppingCart />} />
           <Route path="login" element={<Login />} />
           <Route path="*" element={<Fallback />} />
         </Route>
