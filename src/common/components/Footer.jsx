@@ -18,7 +18,7 @@ const Footer = () => {
       position={{
         xs: 'static',
         sm: 'static',
-        lg: '',
+        md: 'static',
       }}
       p={4}
       container

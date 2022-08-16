@@ -1,9 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
-import Routing from './assets/routes/Routing'
-import { NotificationProvider } from './context/NotificationContext'
 
+import { NotificationProvider } from './context/NotificationContext'
 import { UserDataProvider } from './context/UserDataContext'
 import { UserSettingsProvider } from './context/UserSettingsContext'
+import Routing from './assets/routes/Routing'
 
 const App = () => {
   return (

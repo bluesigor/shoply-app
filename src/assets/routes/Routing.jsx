@@ -9,7 +9,12 @@ import Fallback from '../../pages/Fallback/Fallback'
 import Admin from '../../pages/Admin/Admin'
 import Layout from './Layout'
 import RequireAuth from '../../common/components/RequireAuth'
+<<<<<<< HEAD
+import Product from '../../pages/Product/Product'
+
+=======
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart'
+>>>>>>> 02f2be8254c8d965822e25481fc29873830b492d
 const Routing = () => {
   return (
     <>
@@ -17,6 +22,7 @@ const Routing = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:productId" element={<Product />} />
           <Route element={<RequireAuth />}>
             <Route path="user" element={<User />} />
             <Route path="admin" element={<Admin />} />

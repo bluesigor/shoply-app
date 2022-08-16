@@ -22,7 +22,6 @@ export const NotificationProvider = ({ children }) => {
         payload: value,
       })
     },
-
     open: state.open,
     setNotificationClose: () => {
       dispatch({ type: 'setNotificationClose' })
