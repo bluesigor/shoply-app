@@ -9,12 +9,9 @@ import Fallback from '../../pages/Fallback/Fallback'
 import Admin from '../../pages/Admin/Admin'
 import Layout from './Layout'
 import RequireAuth from '../../common/components/RequireAuth'
-<<<<<<< HEAD
 import Product from '../../pages/Product/Product'
-
-=======
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart'
->>>>>>> 02f2be8254c8d965822e25481fc29873830b492d
+
 const Routing = () => {
   return (
     <>
