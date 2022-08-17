@@ -1,20 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ShoppingBag } from '@mui/icons-material'
 import { Box, IconButton } from '@mui/material'
-import { Link } from 'react-router-dom'
 
-import { useNotificationContext } from '../../../context/NotificationContext'
 import Localizator from '../../../common/components/Localizator'
+import useAddToCart from '../../../utils/hooks/useAddToCart'
 
-const ProductCardButton = ({ id }) => {
-  const { setNotificationOpen } = useNotificationContext()
-
-  const handleMessage = () => {
-    setNotificationOpen('Item was added to your basket')
-  }
+const ProductCardButton = ({ id, product }) => {
+  const { handleAddToCart } = useAddToCart()
 
   return (
     <Box
+      sx={{
+        padding: '0px 15px',
+      }}
       display="flex"
       flexDirection="row"
       alignItems="center"
@@ -29,7 +28,7 @@ const ProductCardButton = ({ id }) => {
       >
         <Localizator str="Details" />
       </Link>
-      <IconButton onClick={handleMessage}>
+      <IconButton onClick={() => handleAddToCart(product)}>
         <ShoppingBag />
       </IconButton>
     </Box>

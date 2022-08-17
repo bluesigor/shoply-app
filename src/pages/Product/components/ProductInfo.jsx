@@ -1,10 +1,25 @@
 import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
+import { useUserDataContext } from '../../../context/UserDataContext'
+import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
 import Localizator from '../../../common/components/Localizator'
+import useAddToCart from '../../../utils/hooks/useAddToCart'
+import useRemoveFromCart from '../../../utils/hooks/useRemoveFromCart'
 import ProductRate from './ProductRate'
 
 const ProductInfo = ({ product }) => {
+  const { cart } = useShoppingCartContext()
+  const { isLoggedIn, isAdmin } = useUserDataContext()
+
+  const navigate = useNavigate()
+
+  const { handleAddToCart } = useAddToCart()
+  const { removeCartQuantity } = useRemoveFromCart()
+
+  const sameCard = cart.find((item) => item.id === product.id)
+
   return (
     <Box margin={{ xs: '20px', md: '20px' }} position="relative">
       <Typography
@@ -37,29 +52,46 @@ const ProductInfo = ({ product }) => {
           <Typography fontWeight={700}>
             <Localizator str="Price" /> {product.price}$
           </Typography>
-          <Stack display="flex" alignItems="center" direction="row">
-            <Button size="small" color="inherit" variant="outlined">
-              -
-            </Button>
-            <Typography marginX={4}>0</Typography>
-            <Button variant="outlined" size="small" color="inherit">
-              +
-            </Button>
-          </Stack>
+          {isLoggedIn && !isAdmin && (
+            <Stack display="flex" alignItems="center" direction="row">
+              <Button
+                onClick={() => removeCartQuantity(product)}
+                size="small"
+                color="inherit"
+                variant="outlined"
+              >
+                -
+              </Button>
+              <Typography marginX={4}>
+                {sameCard ? sameCard.quantity : 0}
+              </Typography>
+              <Button
+                onClick={() => handleAddToCart(product)}
+                variant="outlined"
+                size="small"
+                color="inherit"
+              >
+                +
+              </Button>
+            </Stack>
+          )}
         </Stack>
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: 'inherit',
-            color: 'inherit',
-            marginTop: '20px',
-            '&:hover': {
+        {isLoggedIn && !isAdmin && (
+          <Button
+            onClick={() => navigate('../shoppingCard', { replace: true })}
+            variant="contained"
+            sx={{
               bgcolor: 'inherit',
-            },
-          }}
-        >
-          <Localizator str="Go to Shopping Bag" />
-        </Button>
+              color: 'inherit',
+              marginTop: '20px',
+              '&:hover': {
+                bgcolor: 'inherit',
+              },
+            }}
+          >
+            <Localizator str="Go to Shopping Bag" />
+          </Button>
+        )}
       </Box>
     </Box>
   )

@@ -8,7 +8,6 @@ const useSingleProduct = () => {
   const singleProduct = productsData.find(
     (product) => product.id === +productId,
   )
-
   return { singleProduct }
 }
 

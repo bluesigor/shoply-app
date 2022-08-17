@@ -6,13 +6,14 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { Logout } from '@mui/icons-material'
 
 import { useUserDataContext } from '../../context/UserDataContext'
+import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 import Localizator from './Localizator'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
   const { userData, setIsLoggedIn, isLoggedIn, isAdmin } = useUserDataContext()
-
+  const { cart } = useShoppingCartContext()
   return (
     <Grid
       md={2}
@@ -28,16 +29,19 @@ const LoginNavbar = () => {
           <EditIcon />
         </IconButton>
       ) : (
-        <IconButton>
-          <Link
-            style={{
-              color: 'inherit',
-            }}
-            to="shoppingCard"
-          >
-            <ShoppingCartOutlinedIcon />
-          </Link>
-        </IconButton>
+        isLoggedIn && (
+          <IconButton>
+            <Link
+              style={{
+                color: 'inherit',
+              }}
+              to="shoppingCard"
+            >
+              <ShoppingCartOutlinedIcon />
+            </Link>
+            {cart.length > 0 ? cart.length : null}
+          </IconButton>
+        )
       )}
       {isLoggedIn ? (
         <Button

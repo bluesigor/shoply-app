@@ -1,5 +1,5 @@
-import { TableCell, TableHead, TableRow } from '@mui/material'
 import React from 'react'
+import { TableCell, TableHead, TableRow } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
 

@@ -4,7 +4,7 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import Localizator from '../../../common/components/Localizator'
 import ProductCardButton from './ProductCardButton'
 
-const ProductCard = ({ title, id, image }) => {
+const ProductCard = ({ title, product, id, image }) => {
   return (
     <Card
       flex="1"
@@ -12,18 +12,16 @@ const ProductCard = ({ title, id, image }) => {
       sx={{
         boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
         padding: '20px',
-        margin: '35px',
-        height: '400px',
-        width: '300px',
-        overflow: 'scroll',
-        justifyContent: 'space-between',
+        margin: '10px 25px',
+        height: '100%',
+        maxWidth: '300px',
       }}
     >
       <CardMedia
         sx={{
           maxWidth: '100%',
         }}
-        height="65%"
+        height="100%"
         component="img"
         image={image}
         alt="prod"
@@ -45,7 +43,7 @@ const ProductCard = ({ title, id, image }) => {
           <Localizator str={title} />
         </Typography>
       </CardContent>
-      <ProductCardButton id={id} />
+      <ProductCardButton product={product} id={id} />
     </Card>
   )
 }
