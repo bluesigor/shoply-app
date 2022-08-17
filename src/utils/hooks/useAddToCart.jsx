@@ -5,19 +5,27 @@ import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useUserDataContext } from '../../context/UserDataContext'
 
 const useAddToCart = () => {
-  const { cart, setShoppingCart, setSubTotal } = useShoppingCartContext()
+  const { cart, setShoppingCart, setTotal, total } = useShoppingCartContext()
   const { setNotificationOpen } = useNotificationContext()
   const { isLoggedIn, isAdmin } = useUserDataContext()
 
   useEffect(() => {
-    setSubTotal(
-      cart.length > 0
+    setTotal(
+      cart.length > 1
         ? Math.round(
             cart.map((item) => item.subtotal).reduce((acc, item) => acc + item),
-          )
+          ) +
+            Math.round(
+              cart
+                .map((item) => item.shippingFee)
+                .reduce((acc, item) => acc + item),
+            )
+        : cart.length === 1
+        ? Math.round(cart.map((item) => item.subtotal)) +
+          Math.round(cart.map((item) => item.shippingFee))
         : 0,
     )
-  }, [cart])
+  }, [cart, total])
 
   const handleAddToCart = (product) => {
     const tempProduct = cart.find((item) => item.id === product.id)
@@ -32,6 +40,7 @@ const useAddToCart = () => {
                   quantity: tempProduct.quantity + 1,
                   subtotal:
                     tempProduct.price * tempProduct.quantity + product.price,
+                  shippingFee: (tempProduct.subtotal + tempProduct.price) / 10,
                 }
               : item,
           ),
@@ -43,6 +52,7 @@ const useAddToCart = () => {
             ...product,
             quantity: 1,
             subtotal: product.price,
+            shippingFee: product.price / 10,
           },
         ])
       }

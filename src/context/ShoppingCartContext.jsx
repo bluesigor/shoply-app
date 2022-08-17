@@ -19,11 +19,9 @@ export const ShoppingCartProvider = ({ children }) => {
     setShoppingCart: (product) =>
       dispatch({ type: 'setShoppingCart', payload: product }),
 
-    subTotal: state.subTotal,
-    setSubTotal: (value) => dispatch({ type: 'setSubTotal', payload: value }),
+    total: state.total,
+    setTotal: (value) => dispatch({ type: 'setTotal', payload: value }),
   }
-
-  // console.log(state)
 
   return (
     <ShoppingCartContext.Provider value={shoppingCartValue}>

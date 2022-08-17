@@ -1,6 +1,6 @@
 export const shoppingCartInitialState = {
   cart: [],
-  subTotal: 0,
+  total: 0,
 }
 
 export const shoppingCartReducer = (
@@ -13,10 +13,10 @@ export const shoppingCartReducer = (
         ...state,
         cart: action.payload,
       }
-    case 'setSubTotal':
+    case 'setTotal':
       return {
         ...state,
-        subTotal: action.payload,
+        total: action.payload,
       }
     default:
       return state

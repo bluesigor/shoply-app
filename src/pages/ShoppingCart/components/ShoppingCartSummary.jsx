@@ -6,10 +6,14 @@ import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
 import Localizator from '../../../common/components/Localizator'
 
 const ShoppingCardSummary = () => {
-  const { subTotal } = useShoppingCartContext()
+  const { cart, total } = useShoppingCartContext()
 
-  const shippingFee = subTotal / 10
-  const total = subTotal + shippingFee
+  const totalCartFee = Math.round(
+    cart.map((item) => item.shippingFee).reduce((acc, item) => acc + item),
+  )
+  const subtotalGeneral = Math.round(
+    cart.map((item) => item.subtotal).reduce((acc, item) => acc + item),
+  )
 
   return (
     <>
@@ -18,13 +22,13 @@ const ShoppingCardSummary = () => {
         <TableCell colSpan={1}>
           <Localizator str="Subtotal" />
         </TableCell>
-        <TableCell align="right">{subTotal}$</TableCell>
+        <TableCell align="right">{subtotalGeneral}$</TableCell>
       </TableRow>
       <TableRow>
         <TableCell>
           <Localizator str="Shipping fee" />
         </TableCell>
-        <TableCell align="right">{shippingFee}$</TableCell>
+        <TableCell align="right">{totalCartFee}$</TableCell>
       </TableRow>
       <TableRow>
         <TableCell rowSpan={4}>
