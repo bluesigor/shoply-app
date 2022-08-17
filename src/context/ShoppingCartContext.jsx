@@ -23,8 +23,6 @@ export const ShoppingCartProvider = ({ children }) => {
     setTotal: (value) => dispatch({ type: 'setTotal', payload: value }),
   }
 
-  console.log(state)
-
   return (
     <ShoppingCartContext.Provider value={shoppingCartValue}>
       {children}
