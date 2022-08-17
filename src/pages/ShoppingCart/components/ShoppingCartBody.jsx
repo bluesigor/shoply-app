@@ -1,22 +1,49 @@
 import React from 'react'
-import { Add, Delete, Remove } from '@mui/icons-material'
+import { Add, Remove } from '@mui/icons-material'
 import { IconButton, TableBody, TableCell, TableRow } from '@mui/material'
 
-import { useGetProducts } from '../../../services/getProducts/getProducts'
+import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
 import Localizator from '../../../common/components/Localizator'
+import useAddToCart from '../../../utils/hooks/useAddToCart'
+import useRemoveFromCart from '../../../utils/hooks/useRemoveFromCart'
 import ShoppingCartSummary from './ShoppingCartSummary'
+import ShoppingModal from './ShoppingModal'
+import { useNotificationContext } from '../../../context/NotificationContext'
+import { useUserDataContext } from '../../../context/UserDataContext'
 
 const ShoppingCardBody = () => {
-  const { productsData } = useGetProducts()
-  const products = productsData.slice(0, 4)
+  const { isAdmin, isLoggedIn } = useUserDataContext()
+  const { setNotificationOpen } = useNotificationContext()
+  const { cart } = useShoppingCartContext()
+
+  const { handleAddToCart } = useAddToCart()
+  const { removeCartQuantity } = useRemoveFromCart()
+
+  const handleNotificationAdd = () => {
+    setNotificationOpen(
+      isLoggedIn && !isAdmin
+        ? 'Item was added to your basket'
+        : 'You have to Sign in first!',
+    )
+  }
+
+  const handleNotificationRemove = () => {
+    setNotificationOpen(
+      isLoggedIn && !isAdmin
+        ? 'Item was removed from your basket'
+        : 'You have to Sign in first!',
+    )
+  }
 
   return (
     <TableBody>
-      {products.map((product) => {
-        const { title, id, price, rating, image } = product
+      {cart.map((product) => {
+        const { title, id, price, quantity, image } = product
+
         return (
           <TableRow
             sx={{
+              marginBottom: '30px',
               border: '1px solid inherit',
               borderRadius: '10px',
               '&:last-child td, &:last-child th': { border: 0 },
@@ -38,18 +65,28 @@ const ShoppingCardBody = () => {
             </TableCell>
             <TableCell align="right">{price}$</TableCell>
             <TableCell align="center">
-              <IconButton color="inherit">
+              <IconButton
+                onClick={() => {
+                  handleAddToCart(product)
+                  handleNotificationAdd()
+                }}
+                color="inherit"
+              >
                 <Add />
               </IconButton>
-              {rating.count}
-              <IconButton xcolor="inherit">
+              {quantity}
+              <IconButton
+                onClick={() => {
+                  removeCartQuantity(product)
+                  handleNotificationRemove()
+                }}
+                xcolor="inherit"
+              >
                 <Remove />
               </IconButton>
             </TableCell>
             <TableCell align="right">
-              <IconButton>
-                <Delete />
-              </IconButton>
+              <ShoppingModal product={product} />
             </TableCell>
           </TableRow>
         )

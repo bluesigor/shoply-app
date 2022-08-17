@@ -4,6 +4,7 @@ import { NotificationProvider } from './context/NotificationContext'
 import { UserDataProvider } from './context/UserDataContext'
 import { UserSettingsProvider } from './context/UserSettingsContext'
 import Routing from './assets/routes/Routing'
+import { ShoppingCartProvider } from './context/ShoppingCartContext'
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
         <NotificationProvider>
           <UserDataProvider>
             <UserSettingsProvider>
-              <Routing />
+              <ShoppingCartProvider>
+                <Routing />
+              </ShoppingCartProvider>
             </UserSettingsProvider>
           </UserDataProvider>
         </NotificationProvider>

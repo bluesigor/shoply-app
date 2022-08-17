@@ -4,7 +4,15 @@ import { Box, Paper, Table, TableContainer, Typography } from '@mui/material'
 import Localizator from '../../common/components/Localizator'
 import ShoppingCartHeader from './components/ShoppingCartHeader'
 import ShoppingCartBody from './components/ShoppingCartBody'
+import { useShoppingCartContext } from '../../context/ShoppingCartContext'
+import ShoppingCartFallback from './components/ShoppingCartFallback'
 const ShoppingCart = () => {
+  const { cart } = useShoppingCartContext()
+
+  if (cart.length === 0) {
+    return <ShoppingCartFallback />
+  }
+
   return (
     <Box p={8}>
       <Typography

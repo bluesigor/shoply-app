@@ -1,20 +1,32 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ShoppingBag } from '@mui/icons-material'
 import { Box, IconButton } from '@mui/material'
-import { Link } from 'react-router-dom'
 
-import { useNotificationContext } from '../../../context/NotificationContext'
 import Localizator from '../../../common/components/Localizator'
+import useAddToCart from '../../../utils/hooks/useAddToCart'
+import { useUserDataContext } from '../../../context/UserDataContext'
+import { useNotificationContext } from '../../../context/NotificationContext'
 
-const ProductCardButton = ({ id }) => {
+const ProductCardButton = ({ id, product }) => {
+  const { isAdmin, isLoggedIn } = useUserDataContext()
   const { setNotificationOpen } = useNotificationContext()
 
-  const handleMessage = () => {
-    setNotificationOpen('Item was added to your basket')
+  const { handleAddToCart } = useAddToCart()
+
+  const handleNotificationAdd = () => {
+    setNotificationOpen(
+      isLoggedIn && !isAdmin
+        ? 'Item was added to your basket'
+        : 'You have to Sign in first!',
+    )
   }
 
   return (
     <Box
+      sx={{
+        padding: '0px 15px',
+      }}
       display="flex"
       flexDirection="row"
       alignItems="center"
@@ -29,7 +41,12 @@ const ProductCardButton = ({ id }) => {
       >
         <Localizator str="Details" />
       </Link>
-      <IconButton onClick={handleMessage}>
+      <IconButton
+        onClick={() => {
+          handleAddToCart(product)
+          handleNotificationAdd()
+        }}
+      >
         <ShoppingBag />
       </IconButton>
     </Box>
