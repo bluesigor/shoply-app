@@ -8,12 +8,32 @@ import useAddToCart from '../../../utils/hooks/useAddToCart'
 import useRemoveFromCart from '../../../utils/hooks/useRemoveFromCart'
 import ShoppingCartSummary from './ShoppingCartSummary'
 import ShoppingModal from './ShoppingModal'
+import { useNotificationContext } from '../../../context/NotificationContext'
+import { useUserDataContext } from '../../../context/UserDataContext'
 
 const ShoppingCardBody = () => {
+  const { isAdmin, isLoggedIn } = useUserDataContext()
+  const { setNotificationOpen } = useNotificationContext()
   const { cart } = useShoppingCartContext()
 
   const { handleAddToCart } = useAddToCart()
   const { removeCartQuantity } = useRemoveFromCart()
+
+  const handleNotificationAdd = () => {
+    setNotificationOpen(
+      isLoggedIn && !isAdmin
+        ? 'Item was added to your basket'
+        : 'You have to Sign in first!',
+    )
+  }
+
+  const handleNotificationRemove = () => {
+    setNotificationOpen(
+      isLoggedIn && !isAdmin
+        ? 'Item was removed from your basket'
+        : 'You have to Sign in first!',
+    )
+  }
 
   return (
     <TableBody>
@@ -46,14 +66,20 @@ const ShoppingCardBody = () => {
             <TableCell align="right">{price}$</TableCell>
             <TableCell align="center">
               <IconButton
-                onClick={() => handleAddToCart(product)}
+                onClick={() => {
+                  handleAddToCart(product)
+                  handleNotificationAdd()
+                }}
                 color="inherit"
               >
                 <Add />
               </IconButton>
               {quantity}
               <IconButton
-                onClick={() => removeCartQuantity(product)}
+                onClick={() => {
+                  removeCartQuantity(product)
+                  handleNotificationRemove()
+                }}
                 xcolor="inherit"
               >
                 <Remove />

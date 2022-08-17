@@ -1,10 +1,8 @@
-import { useNotificationContext } from '../../context/NotificationContext'
 import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useUserDataContext } from '../../context/UserDataContext'
 
 const useRemoveFromCart = () => {
   const { cart, setShoppingCart } = useShoppingCartContext()
-  const { setNotificationOpen } = useNotificationContext()
   const { isLoggedIn, isAdmin } = useUserDataContext()
 
   const removeCartQuantity = (product) => {
@@ -41,11 +39,6 @@ const useRemoveFromCart = () => {
     } else {
       return null
     }
-    setNotificationOpen(
-      isLoggedIn && !isAdmin
-        ? 'Item was removed from your basket'
-        : 'You have to Sign in first!',
-    )
   }
 
   return { removeCartQuantity, removeCart }

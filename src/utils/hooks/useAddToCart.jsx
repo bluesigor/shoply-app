@@ -1,12 +1,10 @@
 import { useEffect } from 'react'
 
-import { useNotificationContext } from '../../context/NotificationContext'
 import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useUserDataContext } from '../../context/UserDataContext'
 
 const useAddToCart = () => {
   const { cart, setShoppingCart, setTotal, total } = useShoppingCartContext()
-  const { setNotificationOpen } = useNotificationContext()
   const { isLoggedIn, isAdmin } = useUserDataContext()
 
   useEffect(() => {
@@ -57,12 +55,6 @@ const useAddToCart = () => {
         ])
       }
     }
-
-    setNotificationOpen(
-      isLoggedIn && !isAdmin
-        ? 'Item was added to your basket'
-        : 'You have to Sign in first!',
-    )
   }
 
   return { handleAddToCart }
