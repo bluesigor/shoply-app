@@ -3,13 +3,13 @@ import { Add, Remove } from '@mui/icons-material'
 import { IconButton, TableBody, TableCell, TableRow } from '@mui/material'
 
 import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
+import { useNotificationContext } from '../../../context/NotificationContext'
+import { useUserDataContext } from '../../../context/UserDataContext'
 import Localizator from '../../../common/components/Localizator'
 import useAddToCart from '../../../utils/hooks/useAddToCart'
 import useRemoveFromCart from '../../../utils/hooks/useRemoveFromCart'
 import ShoppingCartSummary from './ShoppingCartSummary'
 import ShoppingModal from './ShoppingModal'
-import { useNotificationContext } from '../../../context/NotificationContext'
-import { useUserDataContext } from '../../../context/UserDataContext'
 
 const ShoppingCardBody = () => {
   const { isAdmin, isLoggedIn } = useUserDataContext()
