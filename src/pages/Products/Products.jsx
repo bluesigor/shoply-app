@@ -8,6 +8,7 @@ const Products = () => {
 
   const product = productsData.map((item) => {
     const { id, title, image } = item
+
     return (
       <ProductCard
         key={id}

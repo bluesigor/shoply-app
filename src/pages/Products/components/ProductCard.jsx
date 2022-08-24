@@ -7,28 +7,31 @@ import ProductCardButton from './ProductCardButton'
 const ProductCard = ({ title, product, id, image }) => {
   return (
     <Card
-      flex="1"
       variant="outlined"
       sx={{
+        maxWidth: '300px',
+        flex: ' 1 1 21rem',
         boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
         padding: '20px',
         margin: '10px 25px',
-        height: '100%',
-        maxWidth: '300px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
       }}
     >
       <CardMedia
         sx={{
-          maxWidth: '100%',
+          textAlign: 'center',
+          maxHeight: '100%',
         }}
-        height="100%"
         component="img"
         image={image}
         alt="prod"
       />
       <CardContent
         sx={{
-          maxWidth: '100%',
+          // maxWidth: '100%',
+          // height: '100%',
           dispaly: 'flex',
           fd: 'column',
         }}
