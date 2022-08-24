@@ -1,11 +1,12 @@
 import React from 'react'
-import { DeleteForever, Edit } from '@mui/icons-material'
+import { DeleteForever } from '@mui/icons-material'
 import { IconButton, TableBody, TableCell, TableRow } from '@mui/material'
 
-import Localizator from '../../../common/components/Localizator'
-import useAdminCRUD from '../../../services/useAdminData/useAdminCRUD'
+import Localizator from '../../../../common/components/Localizator'
+import AdminEditProduct from '../AdminEditProduct/AdminEditProduct'
+import useAdminCRUD from '../../../../utils/hooks/useAdminCRUD'
 
-const AdminProductsData = ({ id, count, title, price }) => {
+const AdminSingleProductData = ({ product, id, count, title, price }) => {
   const { removeProduct } = useAdminCRUD()
 
   return (
@@ -21,9 +22,7 @@ const AdminProductsData = ({ id, count, title, price }) => {
           <TableCell align="left">{price}</TableCell>
           <TableCell align="center">{count}</TableCell>
           <TableCell align="center">
-            <IconButton>
-              <Edit />
-            </IconButton>
+            <AdminEditProduct product={product} />
           </TableCell>
           <TableCell align="left">
             <IconButton onClick={() => removeProduct(id)}>
@@ -38,4 +37,4 @@ const AdminProductsData = ({ id, count, title, price }) => {
   )
 }
 
-export default AdminProductsData
+export default AdminSingleProductData
