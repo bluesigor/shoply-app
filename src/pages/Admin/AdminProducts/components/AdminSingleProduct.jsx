@@ -2,12 +2,13 @@ import React from 'react'
 
 import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 import AdminSingleProductData from './AdminSingleProductData'
+import { TableBody } from '@mui/material'
 
 const AdminSingleProduct = ({ page, rowsPerPage }) => {
   const { adminProducts } = useAdminDataContext()
 
   return (
-    <>
+    <TableBody>
       {adminProducts
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         .map((prod) => {
@@ -29,7 +30,7 @@ const AdminSingleProduct = ({ page, rowsPerPage }) => {
             />
           )
         })}
-    </>
+    </TableBody>
   )
 }
 

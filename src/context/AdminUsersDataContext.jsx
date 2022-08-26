@@ -18,6 +18,9 @@ export const AdminDataProvider = ({ children }) => {
     adminProducts: state.adminProducts,
     setAdminProductsData: (value) =>
       dispatch({ type: 'setAdminProductsData', payload: value }),
+
+    updateAdminProductsData: (id, value) =>
+      dispatch({ type: 'updateAdminProductsData', id, value }),
   }
 
   return (

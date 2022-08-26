@@ -5,9 +5,16 @@ import { InputAdornment, TextField } from '@mui/material'
 const ModalEditQuantity = ({ count, error, onChange }) => {
   const handleCount = (e) => {
     onChange((prev) => {
+      if (+e.target.value > 0) {
+        return {
+          ...prev,
+          rating: { count: +e.target.value },
+        }
+      }
+
       return {
         ...prev,
-        rating: { count: e.target.value },
+        rating: { count: 0 },
       }
     })
   }
