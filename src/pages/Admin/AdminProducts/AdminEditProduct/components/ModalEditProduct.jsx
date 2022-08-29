@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button, Modal } from '@mui/material'
 
-import { useNotificationContext } from '../../../../../context/NotificationContext'
 import { useAdminDataContext } from '../../../../../context/AdminUsersDataContext'
 
 import ModalEditHeader from './ModalEditHeader'
@@ -25,7 +24,6 @@ const style = {
 }
 
 const ModalEditProduct = ({ open, handleClose, product }) => {
-  const { setNotificationOpen } = useNotificationContext()
   const { updateAdminProductsData } = useAdminDataContext()
   const { sendData } = useUpdateAdminData()
 
@@ -51,8 +49,6 @@ const ModalEditProduct = ({ open, handleClose, product }) => {
 
     if (isValid) {
       updateAdminProductsData(editProduct.id, editProduct)
-
-      setNotificationOpen(`${editProduct.title} was successfuly edited!`)
 
       setError(false)
 

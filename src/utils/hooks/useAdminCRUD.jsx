@@ -8,10 +8,7 @@ const useAdminCRUD = () => {
   const removeProduct = (id) => {
     const tempItem = adminProducts.find((item) => item.id === id)
 
-    if (tempItem) {
-      const specificItem = adminProducts.filter((item) => item.id !== id)
-      removeProductData(specificItem)
-    }
+    removeProductData(tempItem.id)
 
     setNotificationOpen(`${tempItem.title} was removed from your list!`)
   }
