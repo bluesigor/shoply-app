@@ -2,7 +2,7 @@ import { Container, Stack } from '@mui/material'
 
 import ProductInfo from './components/ProductInfo'
 import ProductImage from './components/ProductImage'
-import useSingleProduct from '../../services/useSingleProduct'
+import useSingleProduct from '../../utils/hooks/useSingleProduct'
 
 const Product = () => {
   const { singleProduct } = useSingleProduct()

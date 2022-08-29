@@ -14,7 +14,7 @@ const AdminMain = () => {
       sx={{
         margin: '30px',
         position: 'relative',
-        minHeight: '70vh',
+        minHeight: '60vh',
         display: 'flex',
         flexDirection: 'row',
       }}

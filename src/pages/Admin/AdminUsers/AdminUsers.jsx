@@ -9,32 +9,9 @@ import {
 import React from 'react'
 
 import Localizator from '../../../common/components/Localizator'
-import { useAdminDataContext } from '../../../context/AdminUsersDataContext'
-import AdminUsersData from './AdminUsersData'
+import AdminSingleUser from './components/AdminSingleUser'
 
 const AdminUsers = () => {
-  const { adminUsers } = useAdminDataContext()
-
-  const users = adminUsers.map((user) => {
-    const {
-      id,
-      name: { firstname, lastname },
-      username,
-      email,
-    } = user
-
-    return (
-      <AdminUsersData
-        key={id}
-        id={id}
-        firstname={firstname}
-        username={username}
-        email={email}
-        lastname={lastname}
-      />
-    )
-  })
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: '650px' }} aria-label="caption table">
@@ -57,7 +34,7 @@ const AdminUsers = () => {
             <TableCell align="right"></TableCell>
           </TableRow>
         </TableHead>
-        {users}
+        <AdminSingleUser />
       </Table>
     </TableContainer>
   )
