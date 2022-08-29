@@ -16,12 +16,8 @@ const AdminSingleProductData = ({ product, id, count, title, price }) => {
       </TableCell>
       <TableCell align="left">{price}</TableCell>
       <TableCell align="center">{count}</TableCell>
-      <TableCell align="center">
-        <AdminEditProduct product={product} />
-      </TableCell>
-      <TableCell align="left">
-        <AdminRemovePopup id={id} />
-      </TableCell>
+      <AdminEditProduct product={product} />
+      <AdminRemovePopup id={id} />
     </TableRow>
   )
 }

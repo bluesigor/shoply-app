@@ -1,3 +1,4 @@
+import { TableCell } from '@mui/material'
 import React from 'react'
 
 import useModalEditProduct from '../../../../utils/hooks/useModalEditProduct'
@@ -9,14 +10,14 @@ const AdminEditProduct = ({ product }) => {
   const [handleOpen, handleClose, open] = useModalEditProduct()
 
   return (
-    <>
+    <TableCell align="center">
       <ModalOpenButton handleOpen={handleOpen} />
       <ModalEditProduct
         open={open}
         handleClose={handleClose}
         product={product}
       />
-    </>
+    </TableCell>
   )
 }
 

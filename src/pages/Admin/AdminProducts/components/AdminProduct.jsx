@@ -4,7 +4,7 @@ import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 import AdminSingleProductData from './AdminSingleProductData'
 import { TableBody } from '@mui/material'
 
-const AdminSingleProduct = ({ page, rowsPerPage }) => {
+const AdminProduct = ({ page, rowsPerPage }) => {
   const { adminProducts } = useAdminDataContext()
 
   return (
@@ -34,4 +34,4 @@ const AdminSingleProduct = ({ page, rowsPerPage }) => {
   )
 }
 
-export default AdminSingleProduct
+export default AdminProduct

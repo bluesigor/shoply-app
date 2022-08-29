@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import { DeleteForever } from '@mui/icons-material'
-import { Stack, Fade, Popper, IconButton, Button } from '@mui/material'
+import {
+  Stack,
+  Fade,
+  Popper,
+  IconButton,
+  Button,
+  TableCell,
+} from '@mui/material'
 import { Box } from '@mui/system'
 
 import useAdminCRUD from '../../../../utils/hooks/useAdminCRUD'
@@ -21,7 +28,7 @@ const AdminRemovePopup = ({ id }) => {
   const popId = canBeOpen ? 'transition-popper' : undefined
 
   return (
-    <>
+    <TableCell align="left">
       <IconButton aria-describedby={popId} type="button" onClick={handleClick}>
         <DeleteForever />
       </IconButton>
@@ -51,7 +58,7 @@ const AdminRemovePopup = ({ id }) => {
           </Fade>
         )}
       </Popper>
-    </>
+    </TableCell>
   )
 }
 
