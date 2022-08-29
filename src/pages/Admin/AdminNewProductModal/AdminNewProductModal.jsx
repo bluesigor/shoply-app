@@ -6,9 +6,12 @@ import ModalQuantity from './components/ModalQuantity'
 import ModalHeader from './components/ModalHeader'
 import ModalPrice from './components/ModalPrice'
 import ModalTitle from './components/ModalTitle'
+import Localizator from '../../../common/components/Localizator'
+import useAddAdminData from '../../../utils/hooks/useAddAdminData'
+
 import { useAdminDataContext } from '../../../context/AdminUsersDataContext'
 import { useNotificationContext } from '../../../context/NotificationContext'
-import Localizator from '../../../common/components/Localizator'
+import { validateProduct } from '../../../utils/helpers/validateProduct'
 
 const style = {
   position: 'absolute',
@@ -24,6 +27,7 @@ const style = {
 
 const AdminNewProductModal = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [error, setError] = useState(false)
   const [productInputData, setProductInputData] = useState({
     title: '',
     price: 0,
@@ -34,8 +38,10 @@ const AdminNewProductModal = () => {
     id: '',
   })
 
-  const { adminProducts, setAdminProductsData } = useAdminDataContext()
+  const { adminProducts, addNewProduct } = useAdminDataContext()
   const { setNotificationOpen } = useNotificationContext()
+
+  const { addData } = useAddAdminData()
 
   const handleOpen = () => setOpenModal(true)
 
@@ -48,7 +54,6 @@ const AdminNewProductModal = () => {
       rating: {
         count: 0,
       },
-      error: false,
       id: '',
     })
   }
@@ -56,38 +61,37 @@ const AdminNewProductModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    const isValid = validateProduct(productInputData)
+
     const {
       title,
       price,
       rating: { count },
     } = productInputData
 
-    if (!title || price <= 0 || count <= 0) {
-      setProductInputData((prev) => {
-        return {
-          ...prev,
-          error: true,
-        }
-      })
+    if (!isValid) {
+      setError(true)
     }
 
-    if (title && price > 0 && count > 0) {
+    if (isValid) {
       const exist = adminProducts.find((product) => product.title === title)
 
       if (exist) {
         setNotificationOpen(`${title} already in your list, you can edit it!`)
       } else {
-        setAdminProductsData([
-          ...adminProducts,
-          {
-            title: title,
-            price: price,
-            rating: { count: +count },
-            error: false,
-            id: Math.random().toString(36).substr(2, 9),
-          },
-        ])
+        addNewProduct({
+          title: title,
+          price: price,
+          rating: { count: +count },
+          error: false,
+          id: Math.random().toString(36).substr(2, 9),
+        })
+
+        addData(productInputData)
+
         setNotificationOpen(`${title} was added to your list!`)
+
+        setError(false)
       }
 
       handleClose()
@@ -110,18 +114,18 @@ const AdminNewProductModal = () => {
           <ModalTitle
             onChange={setProductInputData}
             title={productInputData.title}
-            error={productInputData.error}
+            error={error}
           />
           <ModalPrice
             onChange={setProductInputData}
             price={productInputData.price}
-            error={productInputData.error}
+            error={error}
           />
 
           <ModalQuantity
             onChange={setProductInputData}
             count={productInputData.rating.count}
-            error={productInputData.error}
+            error={error}
           />
 
           <Button

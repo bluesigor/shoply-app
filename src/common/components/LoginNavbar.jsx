@@ -1,19 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Grid, IconButton } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { Logout } from '@mui/icons-material'
 
-import { useUserDataContext } from '../../context/UserDataContext'
-import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 import Localizator from './Localizator'
+
+import { useUserDataContext } from '../../context/UserDataContext'
+import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
   const { userData, setIsLoggedIn, isLoggedIn, isAdmin } = useUserDataContext()
   const { cart } = useShoppingCartContext()
+  
   return (
     <Grid
       md={2}
@@ -24,12 +25,8 @@ const LoginNavbar = () => {
       display={{ xs: 'none', md: 'flex' }}
       item
     >
-      {isLoggedIn && isAdmin ? (
-        <IconButton>
-          <EditIcon />
-        </IconButton>
-      ) : (
-        isLoggedIn && (
+      {isLoggedIn && !isAdmin &&
+        
           <IconButton>
             <Link
               style={{
@@ -41,8 +38,8 @@ const LoginNavbar = () => {
             </Link>
             {cart.length > 0 ? cart.length : null}
           </IconButton>
-        )
-      )}
+        
+      }
       {isLoggedIn ? (
         <Button
           color="inherit"

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import AdminProductPagination from './components/AdminProductPagination'
-import AdminProductsList from './components/AdminProductsList'
+import AdminProductsTable from './components/AdminProductsTable'
 
 const AdminProducts = () => {
   const [page, setPage] = useState(0)
@@ -9,7 +9,7 @@ const AdminProducts = () => {
 
   return (
     <>
-      <AdminProductsList page={page} rowsPerPage={rowsPerPage} />
+      <AdminProductsTable page={page} rowsPerPage={rowsPerPage} />
       <AdminProductPagination
         page={page}
         rowsPerPage={rowsPerPage}
