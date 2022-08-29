@@ -11,7 +11,7 @@ import {
 import Localizator from '../../../../common/components/Localizator'
 import AdminSingleProduct from './AdminSingleProduct'
 
-const AdminProductsList = ({ page, rowsPerPage }) => {
+const AdminProductsTable = ({ page, rowsPerPage }) => {
   return (
     <TableContainer component={Paper}>
       <Table
@@ -42,4 +42,4 @@ const AdminProductsList = ({ page, rowsPerPage }) => {
   )
 }
 
-export default AdminProductsList
+export default AdminProductsTable

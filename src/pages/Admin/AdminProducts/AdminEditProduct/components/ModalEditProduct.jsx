@@ -10,6 +10,7 @@ import ModalEditQuantity from './ModalEditQuantity'
 import ModalEditTitle from './ModalEditTitle'
 import Localizator from '../../../../../common/components/Localizator'
 import { validateProduct } from '../../../../../utils/helpers/validateProduct'
+import useUpdateAdminData from '../../../../../utils/hooks/useUpdateAdminData'
 
 const style = {
   position: 'absolute',
@@ -26,6 +27,7 @@ const style = {
 const ModalEditProduct = ({ open, handleClose, product }) => {
   const { setNotificationOpen } = useNotificationContext()
   const { updateAdminProductsData } = useAdminDataContext()
+  const { sendData } = useUpdateAdminData()
 
   const [editProduct, setEditProduct] = useState({
     title: product.title,
@@ -53,6 +55,8 @@ const ModalEditProduct = ({ open, handleClose, product }) => {
       setNotificationOpen(`${editProduct.title} was successfuly edited!`)
 
       setError(false)
+
+      sendData(editProduct)
 
       handleClose()
     }

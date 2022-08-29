@@ -6,6 +6,7 @@ import ShoppingCartHeader from './components/ShoppingCartHeader'
 import ShoppingCartBody from './components/ShoppingCartBody'
 import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 import ShoppingCartFallback from './components/ShoppingCartFallback'
+import ShoppingCartOrderButton from './components/ShoppingCartOrderButton'
 const ShoppingCart = () => {
   const { cart } = useShoppingCartContext()
 
@@ -35,6 +36,7 @@ const ShoppingCart = () => {
           <ShoppingCartBody />
         </Table>
       </TableContainer>
+      <ShoppingCartOrderButton />
     </Box>
   )
 }

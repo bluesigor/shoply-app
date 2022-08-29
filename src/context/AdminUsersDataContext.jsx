@@ -21,6 +21,12 @@ export const AdminDataProvider = ({ children }) => {
 
     updateAdminProductsData: (id, value) =>
       dispatch({ type: 'updateAdminProductsData', id, value }),
+
+    addNewProduct: (value) =>
+      dispatch({ type: 'addNewProduct', payload: value }),
+
+    removeProductData: (id) =>
+      dispatch({ type: 'removeProductData', payload: id }),
   }
 
   return (
