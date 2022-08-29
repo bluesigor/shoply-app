@@ -25,7 +25,7 @@ const usePurchaseShoppingCart = () => {
     }
   }
 
-  return { cart, orderProducts }
+  return { orderProducts }
 }
 
 export default usePurchaseShoppingCart

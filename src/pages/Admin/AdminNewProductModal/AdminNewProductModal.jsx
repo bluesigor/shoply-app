@@ -27,6 +27,7 @@ const style = {
 
 const AdminNewProductModal = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [error, setError] = useState(false)
   const [productInputData, setProductInputData] = useState({
     title: '',
     price: 0,
@@ -56,7 +57,6 @@ const AdminNewProductModal = () => {
       id: '',
     })
   }
-  const [error, setError] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
