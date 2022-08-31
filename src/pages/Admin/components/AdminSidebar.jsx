@@ -9,21 +9,20 @@ const AdminSidebar = () => {
 
   return (
     <Stack
-      mt={20}
-      height="30vh"
       maxWidth="220px"
       display="flex"
+      marginX={2}
       alignItems="center"
       flexDirection="column"
       justifyContent="space-evenly"
     >
       <Button
+        margin={2}
+        variant="outlined"
+        color="inherit"
         sx={{
           padding: '10px',
           width: '100%',
-          color: 'inherit',
-          border: '1px solid inherit',
-          borderRadius: '8px',
         }}
         onClick={handleShowUsers}
         value="users"
@@ -31,12 +30,11 @@ const AdminSidebar = () => {
         <Localizator str="Users" />
       </Button>
       <Button
+        variant="outlined"
+        color="inherit"
         sx={{
           padding: '10px',
           width: '100%',
-          color: 'inherit',
-          border: '1px solid inherit',
-          borderRadius: '8px',
         }}
         onClick={handleShowProducts}
         value="products"

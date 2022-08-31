@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography,Button } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 
 import Localizator from '../../../common/components/Localizator'
@@ -10,7 +10,7 @@ import { useUserDataContext } from '../../../context/UserDataContext'
 
 const AdminTitle = () => {
   const { userData } = useUserDataContext()
-  const { adminProducts,adminUsers } = useAdminDataContext()
+  const { adminProducts } = useAdminDataContext()
 
   return (
     <Box
@@ -28,7 +28,6 @@ const AdminTitle = () => {
         <Localizator str="p.s.: 'Enjoy the life of being an ADMIN'" />
       </Typography>
       {adminProducts.length > 0 && <AdminNewProductModal />}
-      {adminUsers.length > 0 && <Button>Add new User</Button> }
     </Box>
   )
 }
