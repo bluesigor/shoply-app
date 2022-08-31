@@ -1,13 +1,14 @@
 import React from 'react'
+import { TableBody } from '@mui/material'
 
 import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
-import AdminUsersData from './AdminUsersData'
+import UserTableRow from './UserTableRow'
 
-const AdminSingleUser = () => {
+const AdminUserData = () => {
   const { adminUsers } = useAdminDataContext()
 
   return (
-    <>
+    <TableBody>
       {adminUsers.map((user) => {
         const {
           id,
@@ -17,18 +18,19 @@ const AdminSingleUser = () => {
         } = user
 
         return (
-          <AdminUsersData
+          <UserTableRow
+            user={user}
             key={id}
             id={id}
             firstname={firstname}
+            lastname={lastname}
             username={username}
             email={email}
-            lastname={lastname}
           />
         )
       })}
-    </>
+    </TableBody>
   )
 }
 
-export default AdminSingleUser
+export default AdminUserData
