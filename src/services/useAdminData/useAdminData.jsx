@@ -13,6 +13,10 @@ const useAdminData = () => {
     setAdminProductsData(productsData)
   }
 
+  const handleShowBlockedUsers = () => {
+    setAdminUsersData([])
+  }
+
   const handleShowUsers = async () => {
     try {
       const response = await axios.get('https://fakestoreapi.com/users')
@@ -23,7 +27,7 @@ const useAdminData = () => {
     }
   }
 
-  return { handleShowProducts, handleShowUsers }
+  return { handleShowProducts, handleShowUsers, handleShowBlockedUsers }
 }
 
 export default useAdminData

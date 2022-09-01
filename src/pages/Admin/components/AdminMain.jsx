@@ -4,10 +4,12 @@ import { Paper, Stack } from '@mui/material'
 import AdminProducts from '../AdminProducts/AdminProducts'
 import AdminUsers from '../AdminUsers/AdminUsers'
 import AdminSidebar from './AdminSidebar'
+import BlockedUsersTable from '../BlockedUsersTable/BlockedUsersTable'
+
 import { useAdminDataContext } from '../../../context/AdminUsersDataContext'
 
 const AdminMain = () => {
-  const { adminUsers, adminProducts } = useAdminDataContext()
+  const { adminUsers, adminProducts, blockedUsers } = useAdminDataContext()
 
   return (
     <Paper
@@ -28,8 +30,13 @@ const AdminMain = () => {
         width="100%"
         flexDirection="column"
       >
-        {adminProducts.length > 0 ? <AdminProducts /> : null}
         {adminUsers.length > 0 ? <AdminUsers /> : null}
+        {adminProducts.length > 0 ? <AdminProducts /> : null}
+        {adminUsers.length === 0 &&
+        adminProducts.length === 0 &&
+        blockedUsers.length > 0 ? (
+          <BlockedUsersTable />
+        ) : null}
       </Stack>
     </Paper>
   )

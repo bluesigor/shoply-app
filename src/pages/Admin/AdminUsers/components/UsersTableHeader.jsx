@@ -3,7 +3,7 @@ import { TableCell, TableHead, TableRow } from '@mui/material'
 
 import Localizator from '../../../../common/components/Localizator'
 
-const AdminUsersTableHeader = () => {
+const UsersTableHeader = () => {
   return (
     <TableHead>
       <TableRow>
@@ -28,4 +28,4 @@ const AdminUsersTableHeader = () => {
   )
 }
 
-export default AdminUsersTableHeader
+export default UsersTableHeader

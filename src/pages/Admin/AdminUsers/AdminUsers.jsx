@@ -1,12 +1,13 @@
 import React from 'react'
 
 import AdminUsersTable from './components/AdminUsersTable'
+import UserTablePagination from './components/UserTablePagination'
 
 const AdminUsers = () => {
   return (
     <>
       <AdminUsersTable />
-      {/* Paginnation */}
+      <UserTablePagination />
     </>
   )
 }
