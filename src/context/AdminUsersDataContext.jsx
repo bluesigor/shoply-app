@@ -15,6 +15,11 @@ export const AdminDataProvider = ({ children }) => {
     setAdminUsersData: (value) =>
       dispatch({ type: 'setAdminUsersData', payload: value }),
 
+    blockedUsers: state.blockedUsers,
+    setBlockedUser: (id) => dispatch({ type: 'setBlockedUser', payload: id }),
+    removeBlockedUser: (id) =>
+      dispatch({ type: 'removeBlockedUser', payload: id }),
+
     adminProducts: state.adminProducts,
     setAdminProductsData: (value) =>
       dispatch({ type: 'setAdminProductsData', payload: value }),
@@ -27,6 +32,10 @@ export const AdminDataProvider = ({ children }) => {
 
     removeProductData: (id) =>
       dispatch({ type: 'removeProductData', payload: id }),
+
+    pagination: state.pagination,
+    handlePagination: (value) =>
+      dispatch({ type: 'handlePagination', payload: value }),
   }
 
   return (

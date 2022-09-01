@@ -5,7 +5,11 @@ import Localizator from '../../../common/components/Localizator'
 import useAdminData from '../../../services/useAdminData/useAdminData'
 
 const AdminSidebar = () => {
-  const { handleShowProducts, handleShowUsers } = useAdminData()
+  const {
+    handleShowProducts,
+    handleShowBlockedUsers,
+    handleShowUsers,
+  } = useAdminData()
 
   return (
     <Stack
@@ -40,6 +44,19 @@ const AdminSidebar = () => {
         value="products"
       >
         <Localizator str="Products" />
+      </Button>
+
+      <Button
+        variant="outlined"
+        color="inherit"
+        sx={{
+          padding: '10px',
+          width: '100%',
+        }}
+        onClick={handleShowBlockedUsers}
+        value="products"
+      >
+        <Localizator str="Blocked Users" />
       </Button>
     </Stack>
   )

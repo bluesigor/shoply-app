@@ -1,18 +1,18 @@
 import React from 'react'
 import { Paper, Table, TableContainer } from '@mui/material'
 
-import UsersTableHeader from './UsersTableHeader'
-import AdminUserData from './AdminUserData'
+import UsersTableHeader from '../AdminUsers/components/UsersTableHeader'
+import BlockedUser from './components/BlockedUser'
 
-const AdminUsersTable = () => {
+const BlockedUsers = () => {
   return (
     <TableContainer sx={{ minWidth: '100%' }} component={Paper}>
       <Table aria-label="caption table">
         <UsersTableHeader />
-        <AdminUserData />
+        <BlockedUser />
       </Table>
     </TableContainer>
   )
 }
 
-export default AdminUsersTable
+export default BlockedUsers

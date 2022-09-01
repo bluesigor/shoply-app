@@ -1,6 +1,11 @@
 export const adminDataInitialState = {
   adminUsers: [],
   adminProducts: [],
+  blockedUsers: [],
+  pagination: {
+    page: 0,
+    rowsPerPage: 2,
+  },
 }
 
 export const adminDataReducer = (state = adminDataInitialState, action) => {
@@ -10,6 +15,25 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
         ...state,
         adminUsers: action.payload,
         adminProducts: [],
+      }
+    case 'setBlockedUser':
+      return {
+        ...state,
+        blockedUsers: [
+          ...state.blockedUsers,
+          ...state.adminUsers.filter((user) => user.id === action.payload),
+        ],
+        adminUsers: state.adminUsers.filter(
+          (user) => user.id !== action.payload,
+        ),
+        adminProducts: [],
+      }
+    case 'removeBlockedUser':
+      return {
+        ...state,
+        blockedUsers: state.blockedUsers.filter(
+          (user) => user.id !== action.payload,
+        ),
       }
     case 'setAdminProductsData':
       return {
@@ -35,6 +59,14 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
         adminProducts: state.adminProducts.filter(
           (product) => product.id !== action.payload,
         ),
+      }
+    case 'handlePagination':
+      return {
+        ...state,
+        pagination: {
+          ...state.pagination,
+          ...action.payload,
+        },
       }
 
     default:

@@ -2,9 +2,9 @@ import React from 'react'
 import { IconButton } from '@mui/material'
 import { Block } from '@mui/icons-material'
 
-const OpenModalBlockUser = () => {
+const OpenModalBlockUser = ({ setOpen }) => {
   return (
-    <IconButton>
+    <IconButton onClick={setOpen}>
       <Block />
     </IconButton>
   )
