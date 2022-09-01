@@ -4,7 +4,7 @@ import { Paper, Stack } from '@mui/material'
 import AdminProducts from '../AdminProducts/AdminProducts'
 import AdminUsers from '../AdminUsers/AdminUsers'
 import AdminSidebar from './AdminSidebar'
-import BlockedUsers from '../BlockedUsers/BlockedUsers'
+import BlockedUsersTable from '../BlockedUsersTable/BlockedUsersTable'
 
 import { useAdminDataContext } from '../../../context/AdminUsersDataContext'
 
@@ -35,7 +35,7 @@ const AdminMain = () => {
         {adminUsers.length === 0 &&
         adminProducts.length === 0 &&
         blockedUsers.length > 0 ? (
-          <BlockedUsers />
+          <BlockedUsersTable />
         ) : null}
       </Stack>
     </Paper>

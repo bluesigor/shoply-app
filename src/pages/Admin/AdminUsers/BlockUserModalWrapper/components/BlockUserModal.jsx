@@ -28,9 +28,10 @@ const BlockUserModal = ({ id, isOpen, setClose }) => {
 
   const handleBlockUser = () => {
     const tempUser = adminUsers.find((user) => user.id === id)
-
-    setBlockedUser(tempUser.id)
-    setNotificationOpen(`User ${id} was blocked!`)
+    if (tempUser) {
+      setBlockedUser(tempUser.id)
+      setNotificationOpen(`User ${id} was blocked!`)
+    }
   }
 
   return (
@@ -57,10 +58,10 @@ const BlockUserModal = ({ id, isOpen, setClose }) => {
           marginX={10}
         >
           <Button onClick={handleBlockUser} variant="contained" color="inherit">
-            Confirm
+            <Localizator str="Confirm" />
           </Button>
           <Button onClick={setClose} variant="contained" color="inherit">
-            Cancel
+            <Localizator str="Cancel" />
           </Button>
         </Stack>
       </Box>

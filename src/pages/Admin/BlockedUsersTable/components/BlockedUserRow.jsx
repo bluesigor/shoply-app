@@ -9,9 +9,11 @@ const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
   const { setNotificationOpen } = useNotificationContext()
 
   const handleBlock = () => {
-    const tempUser = blockedUsers.find((user) => user.id === id)
-    removeBlockedUser(tempUser.id)
-    setNotificationOpen(`User ${tempUser.id} was blocked forever!`)
+    const tempUser = blockedUsers.find((user) => (user.id === id ? user : null))
+    if (tempUser) {
+      removeBlockedUser(tempUser.id)
+      setNotificationOpen(`User ${tempUser.id} was blocked forever!`)
+    }
   }
 
   return (
