@@ -8,18 +8,18 @@ const UserTablePagination = () => {
 
   const handleChangePage = (event, newPage) => {
     handlePagination({
-      page: newPage,
+      usersPage: newPage,
     })
   }
 
   const handleChangeRowsPerPage = (event) => {
     handlePagination({
-      page: 0,
-      rowsPerPage: event.target.value,
+      usersPage: 0,
+      usersRowsPerPage: event.target.value,
     })
   }
 
-  const { rowsPerPage, page } = pagination
+  const { usersRowsPerPage, usersPage } = pagination
 
   return (
     <TablePagination
@@ -29,8 +29,8 @@ const UserTablePagination = () => {
       rowsPerPageOptions={[2, 3]}
       component="div"
       count={adminUsers.length}
-      rowsPerPage={rowsPerPage}
-      page={page}
+      rowsPerPage={usersRowsPerPage}
+      page={usersPage}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
     />

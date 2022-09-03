@@ -61,8 +61,12 @@ const Burger = () => {
               onClick={handleCloseNavMenu}
             >
               <Button
+                variant="contained"
                 sx={{
+                  width: '100%',
+                  color: 'inherit',
                   textDecoration: 'none',
+                  bgcolor: 'inherit',
                 }}
               >
                 <Link className={classes.link} to={page.link}>

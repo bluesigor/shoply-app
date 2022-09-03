@@ -3,22 +3,22 @@ import { TablePagination } from '@mui/material'
 
 import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 
-const AdminProductPagination = ({
-  page,
-  rowsPerPage,
-  setPage,
-  setRowsPerPage,
-}) => {
-  const { adminProducts } = useAdminDataContext()
+const AdminProductPagination = () => {
+  const { adminProducts, handlePagination, pagination } = useAdminDataContext()
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage)
+    handlePagination({
+      productsPage: newPage,
+    })
   }
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
+    handlePagination({
+      productsPage: 0,
+      productsRowsPerPage: event.target.value,
+    })
   }
+  const { productsRowsPerPage, productsPage } = pagination
 
   return (
     <TablePagination
@@ -28,8 +28,8 @@ const AdminProductPagination = ({
       rowsPerPageOptions={[5, 10]}
       component="div"
       count={adminProducts.length}
-      rowsPerPage={rowsPerPage}
-      page={page}
+      rowsPerPage={productsRowsPerPage}
+      page={productsPage}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
     />

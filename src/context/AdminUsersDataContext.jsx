@@ -17,8 +17,18 @@ export const AdminDataProvider = ({ children }) => {
 
     blockedUsers: state.blockedUsers,
     setBlockedUser: (id) => dispatch({ type: 'setBlockedUser', payload: id }),
+
     removeBlockedUser: (id) =>
       dispatch({ type: 'removeBlockedUser', payload: id }),
+
+    unblockUser: (id) => dispatch({ type: 'unblockUser', payload: id }),
+
+    showPage: state.showPage,
+    showUsers: () => dispatch({ type: 'showUsers' }),
+
+    showBlockedUsers: () => dispatch({ type: 'showBlockedUsers' }),
+
+    showProducts: () => dispatch({ type: 'showProducts' }),
 
     adminProducts: state.adminProducts,
     setAdminProductsData: (value) =>

@@ -3,8 +3,15 @@ export const adminDataInitialState = {
   adminProducts: [],
   blockedUsers: [],
   pagination: {
-    page: 0,
-    rowsPerPage: 2,
+    productsPage: 0,
+    usersPage: 0,
+    productsRowsPerPage: 5,
+    usersRowsPerPage: 2,
+  },
+  showPage: {
+    products: false,
+    users: false,
+    blockedUsers: false,
   },
 }
 
@@ -14,7 +21,36 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
       return {
         ...state,
         adminUsers: action.payload,
-        adminProducts: [],
+      }
+    case 'showUsers':
+      return {
+        ...state,
+        showPage: {
+          ...state.showPage,
+          users: true,
+          products: false,
+          blockedUsers: false,
+        },
+      }
+    case 'showBlockedUsers':
+      return {
+        ...state,
+        showPage: {
+          ...state.showPage,
+          users: false,
+          products: false,
+          blockedUsers: true,
+        },
+      }
+    case 'showProducts':
+      return {
+        ...state,
+        showPage: {
+          ...state.showPage,
+          users: false,
+          products: true,
+          blockedUsers: false,
+        },
       }
     case 'setBlockedUser':
       return {
@@ -26,7 +62,6 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
         adminUsers: state.adminUsers.filter(
           (user) => user.id !== action.payload,
         ),
-        adminProducts: [],
       }
     case 'removeBlockedUser':
       return {
@@ -35,11 +70,22 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
           (user) => user.id !== action.payload,
         ),
       }
+
+    case 'unblockUser':
+      return {
+        ...state,
+        blockedUsers: state.blockedUsers.filter(
+          (user) => user.id !== action.payload,
+        ),
+        adminUsers: [
+          ...state.blockedUsers.filter((user) => user.id === action.payload),
+          ...state.adminUsers,
+        ],
+      }
     case 'setAdminProductsData':
       return {
         ...state,
         adminProducts: action.payload,
-        adminUsers: [],
       }
     case 'updateAdminProductsData':
       return {

@@ -3,6 +3,7 @@ import { Button, Stack } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
 import useAdminData from '../../../services/useAdminData/useAdminData'
+import { useSidebarStyle } from '../../../assets/styles/useSidebarStyle'
 
 const AdminSidebar = () => {
   const {
@@ -10,38 +11,23 @@ const AdminSidebar = () => {
     handleShowBlockedUsers,
     handleShowUsers,
   } = useAdminData()
+  const classes = useSidebarStyle()
 
   return (
-    <Stack
-      maxWidth="220px"
-      display="flex"
-      marginX={2}
-      alignItems="center"
-      flexDirection="column"
-      justifyContent="space-evenly"
-    >
+    <Stack className={classes.root}>
       <Button
-        margin={2}
         variant="outlined"
         color="inherit"
-        sx={{
-          padding: '10px',
-          width: '100%',
-        }}
+        className={classes.button}
         onClick={handleShowUsers}
-        value="users"
       >
         <Localizator str="Users" />
       </Button>
       <Button
         variant="outlined"
         color="inherit"
-        sx={{
-          padding: '10px',
-          width: '100%',
-        }}
+        className={classes.button}
         onClick={handleShowProducts}
-        value="products"
       >
         <Localizator str="Products" />
       </Button>
@@ -49,12 +35,8 @@ const AdminSidebar = () => {
       <Button
         variant="outlined"
         color="inherit"
-        sx={{
-          padding: '10px',
-          width: '100%',
-        }}
+        className={classes.button}
         onClick={handleShowBlockedUsers}
-        value="products"
       >
         <Localizator str="Blocked Users" />
       </Button>

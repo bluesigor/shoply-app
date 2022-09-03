@@ -1,16 +1,21 @@
 import React from 'react'
+import { TableBody } from '@mui/material'
 
 import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 import AdminSingleProductData from './AdminSingleProductData'
-import { TableBody } from '@mui/material'
 
-const AdminProduct = ({ page, rowsPerPage }) => {
-  const { adminProducts } = useAdminDataContext()
+const AdminProduct = () => {
+  const { adminProducts, pagination } = useAdminDataContext()
+
+  const { productsPage, productsRowsPerPage } = pagination
 
   return (
     <TableBody>
       {adminProducts
-        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        .slice(
+          productsPage * productsRowsPerPage,
+          productsPage * productsRowsPerPage + productsRowsPerPage,
+        )
         .map((prod) => {
           const {
             id,

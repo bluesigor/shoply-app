@@ -5,15 +5,21 @@ import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 import { useNotificationContext } from '../../../../context/NotificationContext'
 
 const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
-  const { removeBlockedUser, blockedUsers } = useAdminDataContext()
+  const { removeBlockedUser, blockedUsers, unblockUser } = useAdminDataContext()
   const { setNotificationOpen } = useNotificationContext()
 
   const handleBlock = () => {
     const tempUser = blockedUsers.find((user) => (user.id === id ? user : null))
-    if (tempUser) {
-      removeBlockedUser(tempUser.id)
-      setNotificationOpen(`User ${tempUser.id} was blocked forever!`)
-    }
+
+    removeBlockedUser(tempUser.id)
+    setNotificationOpen(`User ${tempUser.id} was blocked forever!`)
+  }
+
+  const handleUnblock = () => {
+    const tempUser = blockedUsers.find((user) => (user.id === id ? user : null))
+
+    unblockUser(tempUser.id)
+    setNotificationOpen(`User ${tempUser.id} was unblocked!`)
   }
 
   return (
@@ -29,10 +35,14 @@ const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
         sx={{
           display: 'flex',
           flexDirection: 'row',
+          justifyContent: 'space-around',
         }}
       >
         <Button variant="outlined" color="inherit" onClick={handleBlock}>
           Block Forever
+        </Button>
+        <Button variant="outlined" color="inherit" onClick={handleUnblock}>
+          Unblock
         </Button>
       </TableCell>
     </TableRow>

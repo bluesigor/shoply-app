@@ -6,12 +6,15 @@ import UserTableRow from './UserTableRow'
 
 const AdminUserData = () => {
   const { adminUsers, pagination } = useAdminDataContext()
-  const { rowsPerPage, page } = pagination
+  const { usersRowsPerPage, usersPage } = pagination
 
   return (
     <TableBody>
       {adminUsers
-        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        .slice(
+          usersPage * usersRowsPerPage,
+          usersPage * usersRowsPerPage + usersRowsPerPage,
+        )
         .map((user) => {
           const {
             id,
