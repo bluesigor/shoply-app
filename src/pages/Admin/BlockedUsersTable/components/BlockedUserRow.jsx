@@ -3,6 +3,7 @@ import { Button, TableCell, TableRow } from '@mui/material'
 
 import { useAdminDataContext } from '../../../../context/AdminUsersDataContext'
 import { useNotificationContext } from '../../../../context/NotificationContext'
+import Localizator from '../../../../common/components/Localizator'
 
 const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
   const { removeBlockedUser, blockedUsers, unblockUser } = useAdminDataContext()
@@ -39,10 +40,10 @@ const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
         }}
       >
         <Button variant="outlined" color="inherit" onClick={handleBlock}>
-          Block Forever
+          <Localizator str="Block Forever" />
         </Button>
         <Button variant="outlined" color="inherit" onClick={handleUnblock}>
-          Unblock
+          <Localizator str="Unblock" />
         </Button>
       </TableCell>
     </TableRow>

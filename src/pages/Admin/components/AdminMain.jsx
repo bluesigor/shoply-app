@@ -34,9 +34,9 @@ const AdminMain = () => {
           },
         }}
       >
-        {showPage.users ? <AdminUsersTable /> : null}
-        {showPage.products ? <AdminProductsTable /> : null}
-        {showPage.blockedUsers ? <BlockedUsersTable /> : null}
+        {showPage.users && <AdminUsersTable />}
+        {showPage.products && <AdminProductsTable />}
+        {showPage.blockedUsers && <BlockedUsersTable />}
       </Stack>
     </Paper>
   )
