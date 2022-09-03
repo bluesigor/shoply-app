@@ -12,17 +12,27 @@ const ProductCard = ({ title, product, id, image }) => {
         maxWidth: '300px',
         flex: ' 1 1 21rem',
         boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
-        padding: '20px',
-        margin: '10px 25px',
         display: 'flex',
+        margin: 2,
+        maxHeight: '500px !important',
         justifyContent: 'space-between',
         flexDirection: 'column',
+        '@media (min-width:1024px)': {
+          maxWidth: '300px',
+          maxHeight: '500px',
+          margin: 3,
+        },
       }}
     >
       <CardMedia
         sx={{
           textAlign: 'center',
-          maxHeight: '100%',
+          objectFit: 'contain',
+          padding: 1,
+          maxHeight: '60% ',
+          '@media (min-width:1024px)': {
+            padding: 3,
+          },
         }}
         component="img"
         image={image}
@@ -30,8 +40,6 @@ const ProductCard = ({ title, product, id, image }) => {
       />
       <CardContent
         sx={{
-          // maxWidth: '100%',
-          // height: '100%',
           dispaly: 'flex',
           fd: 'column',
         }}

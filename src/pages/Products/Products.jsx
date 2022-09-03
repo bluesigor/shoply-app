@@ -27,8 +27,11 @@ const Products = () => {
           padding: '30px',
           margin: '0px 20px',
           display: 'flex',
+          justifyContent: 'center',
           flexWrap: 'wrap',
           flexDirection: 'row',
+          '@media (min-width:320px)': { margin: 1, padding: '0px' },
+          '@media (min-width:768px)': { margin: 2, padding: 1 },
         }}
       >
         {product}
