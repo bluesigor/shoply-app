@@ -9,16 +9,16 @@ const ProductCard = ({ title, product, id, image }) => {
     <Card
       variant="outlined"
       sx={{
-        maxWidth: '300px',
+        maxWidth: '280px',
         flex: ' 1 1 21rem',
         boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
         display: 'flex',
         margin: 2,
-        maxHeight: '500px !important',
+        maxHeight: '400px',
         justifyContent: 'space-between',
         flexDirection: 'column',
         '@media (min-width:1024px)': {
-          maxWidth: '300px',
+          // maxWidth: '300px',
           maxHeight: '500px',
           margin: 3,
         },
@@ -29,10 +29,7 @@ const ProductCard = ({ title, product, id, image }) => {
           textAlign: 'center',
           objectFit: 'contain',
           padding: 1,
-          maxHeight: '60% ',
-          '@media (min-width:1024px)': {
-            padding: 3,
-          },
+          maxHeight: '60%',
         }}
         component="img"
         image={image}
@@ -40,6 +37,7 @@ const ProductCard = ({ title, product, id, image }) => {
       />
       <CardContent
         sx={{
+          fontSize: '16px',
           dispaly: 'flex',
           fd: 'column',
         }}
@@ -47,7 +45,6 @@ const ProductCard = ({ title, product, id, image }) => {
         <Typography
           letterSpacing="1.4px"
           variant="p"
-          fontSize="18px"
           fontWeight="300"
           component="p"
         >

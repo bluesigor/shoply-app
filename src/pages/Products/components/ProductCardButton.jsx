@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ShoppingBag } from '@mui/icons-material'
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton, Typography } from '@mui/material'
 
 import Localizator from '../../../common/components/Localizator'
 import useAddToCart from '../../../utils/hooks/useAddToCart'
@@ -35,11 +35,26 @@ const ProductCardButton = ({ id, product }) => {
       <Link
         to={`/products/${id}`}
         style={{
+          fontSize: '16px',
           color: 'inherit',
           textDecoration: 'none',
         }}
       >
-        <Localizator str="Details" />
+        <Typography
+          sx={{
+            fontSize: '18px',
+            color: 'inherit',
+            // '@media (minWidth:768px)': {
+            //   fontSize: '20px',
+            // },
+            '@media (min-width:1024px)': {
+              fontSize: '22px',
+            },
+          }}
+          component="p"
+        >
+          <Localizator str="Details" />
+        </Typography>
       </Link>
       <IconButton
         onClick={() => {
@@ -47,7 +62,14 @@ const ProductCardButton = ({ id, product }) => {
           handleNotificationAdd()
         }}
       >
-        <ShoppingBag />
+        <ShoppingBag
+          sx={{
+            fontSize: '20px',
+            '@media (min-width:768px)': {
+              fontSize: '24px',
+            },
+          }}
+        />
       </IconButton>
     </Box>
   )
