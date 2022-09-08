@@ -38,32 +38,48 @@ const ProductInfo = ({ product }) => {
   }
 
   return (
-    <Box margin={{ xs: '20px', md: '20px' }} position="relative">
+    <Box
+      flex={2}
+      display="flex"
+      flexDirection="column"
+      // margin={{ xs: '20px', md: '20px' }}
+    >
       <Typography
-        fontSize={{ xs: '1em', sm: '1.25em', md: '1.5em' }}
+        fontSize={{ xs: '0.7em', sm: '1em', md: '1.3em' }}
         sx={{
           letterSpacing: '0.0935em',
+          marginRight: 0,
         }}
+        flex={1}
         p="4"
         component="p"
       >
         <Localizator str={product.title} />
         (<Localizator str={product.category} />)
       </Typography>
-      <Box display="flex" flexDirection="column" maxWidth="100%">
+      <Box display="flex" flex={1} flexDirection="column">
         <Typography
-          fontSize={{ xs: '0.85em', sm: '0.9em' }}
+          fontSize={{ xs: '0.75em', sm: '0.8em' }}
           fontWeight={400}
           mt={4}
+          sx={{
+            flex: '1',
+          }}
         >
           <Localizator str={product.description} />
         </Typography>
-        <ProductRate rating={product.rating.rate} />
+        <ProductRate
+          sx={{
+            flex: '1',
+          }}
+          rating={product.rating.rate}
+        />
         <Stack
           alignItems="flex-start"
           mt={10}
           p={1}
           direction="row"
+          flex={1}
           justifyContent="space-between"
         >
           <Typography fontWeight={700}>

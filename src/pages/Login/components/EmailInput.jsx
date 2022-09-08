@@ -14,6 +14,7 @@ const EmailInput = ({ value, onChange, error }) => {
 
   return (
     <TextField
+      aria-label="email"
       error={error}
       helperText={error ? 'Please type your email.' : ''}
       autoFocus={true}

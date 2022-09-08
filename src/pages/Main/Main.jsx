@@ -26,7 +26,7 @@ const Main = () => {
         <Typography mb={6} variant="h4" component="h3">
           Logitech G Pro X Superlight
         </Typography>
-        <Typography mb={2} variant="subtitle1">
+        <Typography mb={2}>
           <Localizator str="Transforming shopping into an experience." />
         </Typography>
         <Button
@@ -36,6 +36,7 @@ const Main = () => {
           }}
           size="lg"
           className={classes.button}
+          aria-label="Shop Now"
         >
           <Link className={classes.link} to="products">
             <Localizator str="Shop Now" />
@@ -43,7 +44,12 @@ const Main = () => {
         </Button>
       </Grid>
       <Grid item>
-        <CardMedia sx={{ maxWidth: '500px' }} component="img" image={main} />
+        <CardMedia
+          alt="mouse"
+          sx={{ width: '100%', height: '100%' }}
+          component="img"
+          image={main}
+        />
       </Grid>
     </Grid>
   )

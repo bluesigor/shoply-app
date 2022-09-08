@@ -1,8 +1,9 @@
 import React from 'react'
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
-import { useUserSettingsContext } from '../../context/UserSettingsContext'
 import Localizator from './Localizator'
+
+import { useUserSettingsContext } from '../../context/UserSettingsContext'
 
 const SwitchLocalization = () => {
   const { setUserLanguage, language } = useUserSettingsContext()
