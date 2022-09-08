@@ -7,6 +7,7 @@ import { productsURL } from '../../utils/consts/productsConsts'
 
 export const useGetProducts = () => {
   const [productsData, setProductsData] = useState([])
+
   const { setNotificationOpen } = useNotificationContext()
 
   useEffect(() => {

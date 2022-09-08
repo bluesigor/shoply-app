@@ -1,27 +1,12 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-
 import ProductCard from './ProductCard'
 import ProductFallback from './ProductFallback'
 
 const Products = ({ filteredProducts }) => {
-  const product = filteredProducts ? (
-    filteredProducts.map((item) => {
-      const { id, title, image } = item
-
-      return (
-        <ProductCard
-          key={id}
-          id={id}
-          product={item}
-          title={title}
-          image={image}
-        />
-      )
-    })
-  ) : (
-    <ProductFallback />
-  )
+  if (!filteredProducts) {
+    return <ProductFallback />
+  }
 
   return (
     <Stack
@@ -37,7 +22,19 @@ const Products = ({ filteredProducts }) => {
         '@media (min-width:768px)': { margin: 2, padding: 1 },
       }}
     >
-      {product}
+      {filteredProducts.map((item) => {
+        const { id, title, image } = item
+
+        return (
+          <ProductCard
+            key={id}
+            id={id}
+            product={item}
+            title={title}
+            image={image}
+          />
+        )
+      })}
     </Stack>
   )
 }

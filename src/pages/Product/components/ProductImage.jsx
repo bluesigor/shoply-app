@@ -5,14 +5,15 @@ const ProductImage = ({ image, alt }) => {
   return (
     <Box
       sx={{
+        flex: '1',
         border: '1px solid inherit',
       }}
       item
     >
       <img
         style={{
-          width: '270px',
-          height: '320px',
+          maxWidth: '100%',
+          height: '100%',
         }}
         src={image}
         alt={alt}

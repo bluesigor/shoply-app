@@ -12,7 +12,7 @@ const LoginLogo = () => {
       }}
       item
     >
-      <img src={login} alt="login" />
+      <img height="100%" width="100%" src={login} alt="login" />
     </Grid>
   )
 }

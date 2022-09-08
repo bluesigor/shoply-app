@@ -1,13 +1,10 @@
 import React from 'react'
 import { Box, Grid, IconButton, Typography } from '@mui/material'
 
-import fb from '../../assets/images/facebook.svg'
-import ig from '../../assets/images/instagram.svg'
-import tw from '../../assets/images/twitter.svg'
-import yt from '../../assets/images/youtube.svg'
 import SwitchMode from './SwitchMode'
 import SwitchLocalization from './SwitchLocalization'
 import { useFooterStyle } from '../../assets/styles/useFooterStyle'
+import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material'
 
 const Footer = () => {
   const classes = useFooterStyle()
@@ -30,23 +27,23 @@ const Footer = () => {
         <Typography component="h1" variant="h4">
           Shoply.
         </Typography>
-        <Typography className={classes.text} variant="span" component="h5">
+        <Typography className={classes.text} variant="p" component="p">
           © Copyright 2021. Created by OurTeam
         </Typography>
       </Box>
       <SwitchLocalization />
       <Box p={2}>
-        <IconButton>
-          <img src={fb} alt="fb" />
+        <IconButton aria-label="facebook">
+          <Facebook />
         </IconButton>
-        <IconButton>
-          <img src={ig} alt="ig" />
+        <IconButton aria-label="instagram">
+          <Instagram />
         </IconButton>
-        <IconButton>
-          <img src={tw} alt="tw" />
+        <IconButton aria-label="twitter">
+          <Twitter />
         </IconButton>
-        <IconButton>
-          <img src={yt} alt="yt" />
+        <IconButton aria-label="youtube">
+          <YouTube />
         </IconButton>
       </Box>
     </Grid>

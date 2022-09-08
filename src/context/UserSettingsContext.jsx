@@ -39,6 +39,7 @@ export const UserSettingsProvider = ({ children }) => {
     </UserSettingsContext.Provider>
   )
 }
+
 export const useUserSettingsContext = () => {
   return useContext(UserSettingsContext)
 }

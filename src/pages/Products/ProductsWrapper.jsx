@@ -1,4 +1,4 @@
-import { React } from 'react'
+import React from 'react'
 import { Container, Box } from '@mui/material'
 
 import FilterProducts from './components/FilterProducts'

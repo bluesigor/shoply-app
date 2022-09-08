@@ -14,6 +14,7 @@ const PasswordInput = ({ value, error, onChange }) => {
 
   return (
     <TextField
+      aria-label="password"
       error={error}
       type="password"
       helperText={error ? 'Please type your pass.' : ''}

@@ -14,6 +14,7 @@ const SwitchMode = () => {
     <>
       <CssBaseline />
       <FormControlLabel
+        aria-label="control"
         sx={{
           display: 'flex',
           width: '200px',
