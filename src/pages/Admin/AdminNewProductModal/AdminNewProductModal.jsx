@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Add } from '@mui/icons-material'
 import { Box, Button, IconButton, Modal } from '@mui/material'
 
 import ModalQuantity from './components/ModalQuantity'
@@ -18,11 +17,15 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  width: 300,
   backgroundColor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 6,
+  p: 3,
+  '@media (min-width:500px)': {
+    width: 500,
+    p: 6,
+  },
 }
 
 const AdminNewProductModal = () => {
@@ -101,7 +104,7 @@ const AdminNewProductModal = () => {
   return (
     <>
       <IconButton onClick={handleOpen}>
-        <Add />
+        <Localizator str="Add new product" />
       </IconButton>
       <Modal
         open={openModal}

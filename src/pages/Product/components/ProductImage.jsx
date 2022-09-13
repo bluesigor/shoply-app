@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, CardMedia } from '@mui/material'
 
 const ProductImage = ({ image, alt }) => {
   return (
@@ -10,12 +10,13 @@ const ProductImage = ({ image, alt }) => {
       }}
       item
     >
-      <img
-        style={{
-          maxWidth: '100%',
-          height: '100%',
+      <CardMedia
+        sx={{
+          maxWidth: '340px',
+          maxHeight: '100%',
         }}
-        src={image}
+        component="img"
+        image={image}
         alt={alt}
       />
     </Box>

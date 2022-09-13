@@ -1,4 +1,9 @@
-import React, { createContext, useReducer, useContext } from 'react'
+import React, {
+  createContext,
+  useReducer,
+  useContext,
+  useCallback,
+} from 'react'
 
 import {
   userDataReducer,
@@ -12,11 +17,24 @@ export const UserDataProvider = ({ children }) => {
     userDataReducer,
     userDataReducerInitialState,
   )
+
+  const memoizedSetIsLoggedIn = useCallback(
+    (value) => dispatch({ type: 'setIsLoggedIn', payload: value }),
+    [dispatch],
+  )
+
+  const memoizedSetUserData = useCallback(
+    (user) => dispatch({ type: 'setUserData', payload: user }),
+    [dispatch],
+  )
+
   const userDataValue = {
-    ...state,
-    setIsLoggedIn: (value) =>
-      dispatch({ type: 'setIsLoggedIn', payload: value }),
-    setUserData: (user) => dispatch({ type: 'setUserData', payload: user }),
+    isLoggedIn: state.isLoggedIn,
+    setIsLoggedIn: memoizedSetIsLoggedIn,
+
+    isAdmin: state.isAdmin,
+    userData: state.userData,
+    setUserData: memoizedSetUserData,
   }
 
   return (

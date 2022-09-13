@@ -1,93 +1,77 @@
 import React from 'react'
-import { Box, IconButton, MenuItem, Select } from '@mui/material'
+import { Box, MenuItem, Select } from '@mui/material'
 import { ArrowDownward, ArrowUpward } from '@mui/icons-material'
 import SortIcon from '@mui/icons-material/Sort'
 
 import Localizator from '../../../common/components/Localizator'
-import useSort from '../../../utils/hooks/useSort'
+import useSelect from '../../../utils/hooks/useSelect'
 
-const SortProducts = ({ sortValue, handleSortValue }) => {
-  const { handleOpen, open, handleClose } = useSort()
+const SortProducts = ({ sortValue, setSortValue }) => {
+  const { handleOpen, open, handleClose } = useSelect()
+
+  const handleSortValue = (e) => {
+    setSortValue(e.target.value)
+  }
 
   return (
     <Box
       sx={{
-        width: {
-          md: '100px',
-          xs: '100%',
-          sm: '100%',
-        },
         display: 'flex',
         justifyContent: 'flex-end',
       }}
       component="div"
     >
-      {!open && (
-        <IconButton onClick={handleOpen}>
-          <SortIcon />
-        </IconButton>
-      )}
-
-      {open && (
-        <Select
-          IconComponent={SortIcon}
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
+      <Select
+        IconComponent={SortIcon}
+        labelId="demo-controlled-open-select-label"
+        id="demo-controlled-open-select"
+        open={open}
+        sx={{
+          fontSize: { xs: '14px', sm: '18px' },
+          paddingRight: '20px',
+        }}
+        variant="standard"
+        onClose={handleClose}
+        onOpen={handleOpen}
+        value={sortValue}
+        onChange={handleSortValue}
+      >
+        <MenuItem
+          selected={true}
           sx={{
-            marginRight: '10px',
+            fontSize: '14px',
           }}
-          variant="standard"
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={sortValue}
-          label="Sort"
-          onChange={handleSortValue}
+          value="Sort by title"
         >
-          <MenuItem
+          <Localizator str="Sort by title" />
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontSize: '14px',
+          }}
+          value="Sort by price up"
+        >
+          <Localizator str="Sort by price up" />
+          <ArrowUpward
             sx={{
-              fontSize: '14px',
+              fontSize: '18px',
             }}
-            value=""
-          >
-            <Localizator str="none" />
-          </MenuItem>
-          <MenuItem
+          />
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontSize: '14px',
+          }}
+          value="Sort by price down"
+        >
+          <Localizator str="Sort by price down" />
+          <ArrowDownward
             sx={{
-              fontSize: '14px',
+              fontSize: '18px',
             }}
-            value="Sort by title"
-          >
-            <Localizator str="Sort by title" />
-          </MenuItem>
-          <MenuItem
-            sx={{
-              fontSize: '14px',
-            }}
-            value="Sort by price up"
-          >
-            <Localizator str="Sort by price up" />
-            <ArrowUpward
-              sx={{
-                fontSize: '18px',
-              }}
-            />
-          </MenuItem>
-          <MenuItem
-            sx={{
-              fontSize: '14px',
-            }}
-            value="Sort by price down"
-          >
-            <Localizator str="Sort by price down" />
-            <ArrowDownward
-              sx={{
-                fontSize: '18px',
-              }}
-            />
-          </MenuItem>
-        </Select>
-      )}
+          />
+        </MenuItem>
+      </Select>
     </Box>
   )
 }

@@ -1,4 +1,4 @@
-import { useContext, useReducer } from 'react'
+import { useCallback, useContext, useMemo, useReducer } from 'react'
 import { createContext } from 'react'
 
 import {
@@ -14,13 +14,24 @@ export const ShoppingCartProvider = ({ children }) => {
     shoppingCartInitialState,
   )
 
+  const memoizedSetShoppingCart = useCallback(
+    (product) => dispatch({ type: 'setShoppingCart', payload: product }),
+    [dispatch],
+  )
+  const memoizedSetTotal = useCallback(
+    (value) => dispatch({ type: 'setTotal', payload: value }),
+    [dispatch],
+  )
+  const memoizedCart = useMemo(() => state.cart, [state.cart])
+  const memoizedCartLength = useMemo(() => memoizedCart.length, [memoizedCart])
+
   const shoppingCartValue = {
-    cart: state.cart,
-    setShoppingCart: (product) =>
-      dispatch({ type: 'setShoppingCart', payload: product }),
+    cart: memoizedCart,
+    setShoppingCart: memoizedSetShoppingCart,
 
     total: state.total,
-    setTotal: (value) => dispatch({ type: 'setTotal', payload: value }),
+    setTotal: memoizedSetTotal,
+    cartLength: memoizedCartLength,
   }
 
   return (

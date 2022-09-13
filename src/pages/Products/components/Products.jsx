@@ -1,5 +1,6 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Paper } from '@mui/material'
+
 import ProductCard from './ProductCard'
 import ProductFallback from './ProductFallback'
 
@@ -9,9 +10,10 @@ const Products = ({ filteredProducts }) => {
   }
 
   return (
-    <Stack
+    <Paper
       sx={{
-        flex: 9,
+        bgcolor: 'inherit',
+        boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
         padding: '30px',
         margin: '0px 20px',
         display: 'flex',
@@ -23,7 +25,7 @@ const Products = ({ filteredProducts }) => {
       }}
     >
       {filteredProducts.map((item) => {
-        const { id, title, image } = item
+        const { id, title, image, price } = item
 
         return (
           <ProductCard
@@ -32,10 +34,11 @@ const Products = ({ filteredProducts }) => {
             product={item}
             title={title}
             image={image}
+            price={price}
           />
         )
       })}
-    </Stack>
+    </Paper>
   )
 }
 
