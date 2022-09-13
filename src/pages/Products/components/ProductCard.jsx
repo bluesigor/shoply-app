@@ -1,40 +1,51 @@
 import React from 'react'
-import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Card, CardContent, Typography } from '@mui/material'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 import Localizator from '../../../common/components/Localizator'
 import ProductCardButton from './ProductCardButton'
 
-const ProductCard = ({ title, product, id, image }) => {
+const style = {
+  textAlign: 'center',
+  objectFit: 'contain',
+  padding: 1,
+  width: '100%',
+  height: '250px',
+  '@media (minWidth:1024px)': {
+    width: '100%',
+    height: '300px',
+  },
+}
+
+const ProductCard = ({ title, product, price, id, image }) => {
   return (
     <Card
       variant="outlined"
       sx={{
         maxWidth: '280px',
         flex: ' 1 1 21rem',
-        boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.75)',
+        border: '1px solid ',
         display: 'flex',
         margin: 2,
         maxHeight: '400px',
         justifyContent: 'space-between',
         flexDirection: 'column',
         '@media (min-width:1024px)': {
-          // maxWidth: '300px',
+          maxWidth: '300px',
           maxHeight: '500px',
           margin: 3,
         },
       }}
     >
-      <CardMedia
-        sx={{
-          textAlign: 'center',
-          objectFit: 'contain',
-          padding: 1,
-          maxHeight: '60%',
-        }}
+      <LazyLoadImage
+        effect="blur"
+        style={style}
         component="img"
-        image={image}
+        src={image}
         alt="prod"
       />
+
       <CardContent
         sx={{
           fontSize: '16px',
@@ -51,7 +62,7 @@ const ProductCard = ({ title, product, id, image }) => {
           <Localizator str={title} />
         </Typography>
       </CardContent>
-      <ProductCardButton product={product} id={id} />
+      <ProductCardButton price={price} product={product} id={id} />
     </Card>
   )
 }

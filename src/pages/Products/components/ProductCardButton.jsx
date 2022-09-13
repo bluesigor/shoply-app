@@ -8,7 +8,7 @@ import useAddToCart from '../../../utils/hooks/useAddToCart'
 import { useUserDataContext } from '../../../context/UserDataContext'
 import { useNotificationContext } from '../../../context/NotificationContext'
 
-const ProductCardButton = ({ id, product }) => {
+const ProductCardButton = ({ id, product, price }) => {
   const { isAdmin, isLoggedIn } = useUserDataContext()
   const { setNotificationOpen } = useNotificationContext()
 
@@ -33,6 +33,7 @@ const ProductCardButton = ({ id, product }) => {
       justifyContent="space-between"
     >
       <Link
+        aria-label="product"
         to={`/products/${id}`}
         style={{
           fontSize: '16px',
@@ -44,9 +45,6 @@ const ProductCardButton = ({ id, product }) => {
           sx={{
             fontSize: '18px',
             color: 'inherit',
-            // '@media (minWidth:768px)': {
-            //   fontSize: '20px',
-            // },
             '@media (min-width:1024px)': {
               fontSize: '22px',
             },
@@ -56,7 +54,22 @@ const ProductCardButton = ({ id, product }) => {
           <Localizator str="Details" />
         </Typography>
       </Link>
+      <Typography
+        sx={{
+          p: 1,
+          fontSize: '17px',
+          color: 'inherit',
+          '@media (min-width:1024px)': {
+            fontSize: '22px',
+          },
+        }}
+        component="p"
+      >
+        <Localizator str={`${price} $`} />
+      </Typography>
+
       <IconButton
+        aria-label="buy now"
         onClick={() => {
           handleAddToCart(product)
           handleNotificationAdd()

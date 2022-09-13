@@ -12,9 +12,13 @@ import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
-  const { userData, setIsLoggedIn, isLoggedIn, isAdmin } = useUserDataContext()
-  const { cart } = useShoppingCartContext()
-  
+  const { isLoggedIn, setIsLoggedIn, userData, isAdmin } = useUserDataContext()
+  const { cartLength } = useShoppingCartContext()
+
+  const handleLogout = (e) => {
+    setIsLoggedIn(false)
+  }
+
   return (
     <Grid
       md={2}
@@ -25,21 +29,19 @@ const LoginNavbar = () => {
       display={{ xs: 'none', md: 'flex' }}
       item
     >
-      {isLoggedIn && !isAdmin &&
-        
-          <IconButton>
-            <Link
-              style={{
-                color: 'inherit',
-              }}
-              to="shoppingCard"
-            >
-              <ShoppingCartOutlinedIcon />
-            </Link>
-            {cart.length > 0 ? cart.length : null}
-          </IconButton>
-        
-      }
+      {isLoggedIn && !isAdmin && (
+        <IconButton>
+          <Link
+            style={{
+              color: 'inherit',
+            }}
+            to="shoppingCard"
+          >
+            <ShoppingCartOutlinedIcon />
+          </Link>
+          {cartLength > 0 ? cartLength : null}
+        </IconButton>
+      )}
       {isLoggedIn ? (
         <Button
           color="inherit"
@@ -64,7 +66,7 @@ const LoginNavbar = () => {
         </Button>
       )}
       {isLoggedIn && (
-        <IconButton onClick={(e) => setIsLoggedIn(false)}>
+        <IconButton onClick={handleLogout}>
           <Logout />
         </IconButton>
       )}

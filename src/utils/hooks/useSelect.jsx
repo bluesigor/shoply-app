@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useSort = () => {
+const useSelect = () => {
   const [open, setOpen] = useState(false)
 
   const handleClose = () => {
@@ -18,4 +18,4 @@ const useSort = () => {
   }
 }
 
-export default useSort
+export default useSelect

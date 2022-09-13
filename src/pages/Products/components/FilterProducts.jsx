@@ -11,6 +11,7 @@ const FilterProducts = ({ handleCategory }) => {
       {allCategories.map((category) => {
         return (
           <Button
+            aria-label="category"
             fullWidth
             color="inherit"
             variant="outlined"
