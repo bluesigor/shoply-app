@@ -1,24 +1,39 @@
 import React from 'react'
-import { Button } from '@mui/material'
+import { Button, Backdrop, CircularProgress } from '@mui/material'
 import { Box } from '@mui/system'
 
-import usePurchaseShoppingCart from '../../../utils/hooks/usePurchaseShoppingCart'
+import useLoader from '../../../utils/hooks/useLoader'
+import Localizator from '../../../common/components/Localizator'
+import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
 
 const ShoppingCartOrderButton = () => {
-  const { orderProducts } = usePurchaseShoppingCart()
+  const { open, handleClose, handleToggle } = useLoader()
+  const { clearCart } = useShoppingCartContext()
 
   return (
     <Box
       sx={{
+        width: '100%',
         marginTop: '50px',
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         height: '80px',
       }}
     >
-      <Button onClick={orderProducts} color="inherit" variant="contained">
-        Order Now
+      <Button onClick={clearCart} color="inherit" variant="contained">
+        <Localizator str="Clear Cart" />
       </Button>
+      <Button onClick={handleToggle} color="inherit" variant="contained">
+        <Localizator str="Order Now" />
+      </Button>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+        transitionDuration={2000}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
   )
 }
