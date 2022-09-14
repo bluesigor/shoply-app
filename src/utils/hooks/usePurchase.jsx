@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useShoppingCartContext } from '../../context/ShoppingCartContext'
-import usePurchaseShoppingCart from './usePurchaseShoppingCart'
 
-const useLoader = () => {
+import { useShoppingCartContext } from '../../context/ShoppingCartContext'
+import useConfirmOrder from '../../services/useConfirmOrder'
+
+const usePurchase = () => {
   const [open, setOpen] = useState(false)
-  const { orderProducts } = usePurchaseShoppingCart()
+  const { orderProducts } = useConfirmOrder()
   const { clearCart } = useShoppingCartContext()
   const navigate = useNavigate()
 
@@ -26,4 +27,4 @@ const useLoader = () => {
   return { open, handleClose, handleToggle }
 }
 
-export default useLoader
+export default usePurchase

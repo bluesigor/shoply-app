@@ -2,12 +2,12 @@ import React from 'react'
 import { Button, Backdrop, CircularProgress } from '@mui/material'
 import { Box } from '@mui/system'
 
-import useLoader from '../../../utils/hooks/useLoader'
 import Localizator from '../../../common/components/Localizator'
 import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
+import usePurchase from '../../../utils/hooks/usePurchase'
 
 const ShoppingCartOrderButton = () => {
-  const { open, handleClose, handleToggle } = useLoader()
+  const { open, handleClose, handleToggle } = usePurchase()
   const { clearCart } = useShoppingCartContext()
 
   return (

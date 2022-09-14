@@ -18,7 +18,7 @@ const Footer = () => {
         md: 'static',
         lg: 'static',
       }}
-      p={4}
+      p={{ xs: 2, sm: 2, md: 5 }}
       container
       className={classes.root}
     >
@@ -28,7 +28,7 @@ const Footer = () => {
           Shoply.
         </Typography>
         <Typography className={classes.text} variant="p" component="p">
-          © Copyright 2021. Created by OurTeam
+          © Copyright 2022. Created by OurTeam
         </Typography>
       </Box>
       <SwitchLocalization />
