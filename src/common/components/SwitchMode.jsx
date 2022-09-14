@@ -16,6 +16,7 @@ const SwitchMode = () => {
       <FormControlLabel
         aria-label="control"
         sx={{
+          flex: 1,
           display: 'flex',
           width: '200px',
           margin: '0px',

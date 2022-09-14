@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-import { useNotificationContext } from '../../context/NotificationContext'
-import { useShoppingCartContext } from '../../context/ShoppingCartContext'
+import { useNotificationContext } from '../context/NotificationContext'
+import { useShoppingCartContext } from '../context/ShoppingCartContext'
 
-const usePurchaseShoppingCart = () => {
+const useConfirmOrder = () => {
   const { cart } = useShoppingCartContext()
   const { setNotificationOpen } = useNotificationContext()
 
@@ -28,4 +28,4 @@ const usePurchaseShoppingCart = () => {
   return { orderProducts }
 }
 
-export default usePurchaseShoppingCart
+export default useConfirmOrder

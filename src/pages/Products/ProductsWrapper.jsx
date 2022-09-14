@@ -37,14 +37,11 @@ const ProductsWrapper = () => {
           maxWidth="100%"
           p={{
             xs: 1,
-            // md: 2,
           }}
           display="flex"
           alignItems="center"
           m={{
             xs: 1,
-            // md: 5,
-            // sm: 3,
           }}
           justifyContent="space-between"
           flexDirection={{

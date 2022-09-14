@@ -21,10 +21,10 @@ const LoginNavbar = () => {
 
   return (
     <Grid
-      md={2}
       sx={{
-        flexGrow: 0.5,
-        justifyContent: 'space-between',
+        flex: 1,
+        justifyContent: 'center',
+        maxWidth: '100%',
       }}
       display={{ xs: 'none', md: 'flex' }}
       item
@@ -46,7 +46,7 @@ const LoginNavbar = () => {
         <Button
           color="inherit"
           sx={{
-            textAlign: 'center',
+            alignItems: 'center',
           }}
         >
           <Link className={classes.link} to={isAdmin ? 'admin' : 'user'}>
@@ -58,6 +58,7 @@ const LoginNavbar = () => {
           color="inherit"
           sx={{
             textAlign: 'center',
+            alignItems: 'center',
           }}
         >
           <Link className={classes.link} to="/login">

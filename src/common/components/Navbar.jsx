@@ -8,6 +8,7 @@ import Burger from './Burger'
 import LoginNavbar from './LoginNavbar'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 import Localizator from './Localizator'
+import SwitchMode from './SwitchMode'
 
 const Navbar = () => {
   const classes = useNavbarStyle()
@@ -25,21 +26,28 @@ const Navbar = () => {
                 height: '115px',
               }}
             >
-              <Typography component="h2" variant="h4">
+              <Typography
+                sx={{
+                  flex: 2,
+                }}
+                component="h2"
+                variant="h4"
+              >
                 Shoply.
               </Typography>
-              {pages.map((page) => {
-                return (
-                  <Box
-                    key={page.link}
-                    sx={{
-                      flexGrow: 1,
-                      justifyContent: 'space-around',
-                      display: { xs: 'none', md: 'flex' },
-                    }}
-                  >
+              <Box
+                sx={{
+                  flex: 4,
+                  justifyContent: 'space-between',
+                  display: { xs: 'none', md: 'flex' },
+                }}
+              >
+                {pages.map((page) => {
+                  return (
                     <Button
+                      key={page.link}
                       sx={{
+                        flex: 1,
                         color: 'inherit',
                         fw: '300',
                       }}
@@ -48,10 +56,12 @@ const Navbar = () => {
                         <Localizator str={page.title} />
                       </Link>
                     </Button>
-                  </Box>
-                )
-              })}
-              <LoginNavbar />
+                  )
+                })}
+                <LoginNavbar />
+              </Box>
+              <SwitchMode />
+
               <Burger />
             </Toolbar>
           </Container>
