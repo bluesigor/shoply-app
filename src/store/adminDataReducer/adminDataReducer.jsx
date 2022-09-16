@@ -97,7 +97,7 @@ export const adminDataReducer = (state = adminDataInitialState, action) => {
     case 'addNewProduct':
       return {
         ...state,
-        adminProducts: [...state.adminProducts, action.payload],
+        adminProducts: [action.payload, ...state.adminProducts],
       }
     case 'removeProductData':
       return {

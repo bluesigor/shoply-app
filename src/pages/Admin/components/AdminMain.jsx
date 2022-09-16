@@ -34,6 +34,9 @@ const AdminMain = () => {
           },
         }}
       >
+        {!showPage.users && !showPage.products && !showPage.blockedUsers && (
+          <AdminUsersTable />
+        )}
         {showPage.users && <AdminUsersTable />}
         {showPage.products && <AdminProductsTable />}
         {showPage.blockedUsers && <BlockedUsersTable />}
