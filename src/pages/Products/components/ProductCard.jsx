@@ -41,7 +41,6 @@ const ProductCard = ({ title, product, price, id, image }) => {
           maxHeight: '510px',
           transition: '0.3s',
           boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.45)',
-          // zIndex: 2,
         },
       }}
     >
