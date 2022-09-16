@@ -9,7 +9,7 @@ import ProductCardButton from './ProductCardButton'
 const style = {
   textAlign: 'center',
   objectFit: 'contain',
-  padding: 1,
+  padding: '11px',
   width: '100%',
   height: '250px',
   '@media (minWidth:1024px)': {
@@ -36,6 +36,13 @@ const ProductCard = ({ title, product, price, id, image }) => {
           maxHeight: '500px',
           margin: 3,
         },
+        '&:hover': {
+          maxWidth: '305px',
+          maxHeight: '510px',
+          transition: '0.3s',
+          boxShadow: '0px 1px 20px 1px rgba(0,0,0,0.45)',
+          // zIndex: 2,
+        },
       }}
     >
       <LazyLoadImage
@@ -48,13 +55,16 @@ const ProductCard = ({ title, product, price, id, image }) => {
 
       <CardContent
         sx={{
-          fontSize: '16px',
+          fontSize: '12px',
           dispaly: 'flex',
           fd: 'column',
+          '@media (min-width:1024px)': {
+            fontSize: '16px',
+          },
         }}
       >
         <Typography
-          letterSpacing="1.4px"
+          letterSpacing="1px"
           variant="p"
           fontWeight="300"
           component="p"

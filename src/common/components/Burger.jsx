@@ -25,7 +25,7 @@ const Burger = () => {
   return (
     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
       <IconButton
-        size="large"
+        size="medium"
         aria-label="account of current user"
         aria-controls="menu-appbar"
         aria-haspopup="true"
@@ -48,6 +48,7 @@ const Burger = () => {
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
         sx={{
+          mt: '30px',
           display: { xs: 'block', md: 'none' },
         }}
       >
@@ -67,6 +68,7 @@ const Burger = () => {
                   color: 'inherit',
                   textDecoration: 'none',
                   bgcolor: 'inherit',
+                  fontSize: '14px',
                 }}
               >
                 <Link className={classes.link} to={page.link}>

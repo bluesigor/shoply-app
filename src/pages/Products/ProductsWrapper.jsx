@@ -33,6 +33,7 @@ const ProductsWrapper = () => {
           searchProduct={searchProduct}
           setSearchItem={setSearchItem}
         />
+        <SortProducts setSortValue={setSortValue} sortValue={sortValue} />
         <Box
           maxWidth="100%"
           p={{
@@ -49,7 +50,6 @@ const ProductsWrapper = () => {
             md: 'row',
           }}
         >
-          <SortProducts setSortValue={setSortValue} sortValue={sortValue} />
           <FilterProducts handleCategory={handleCategory} />
         </Box>
         <Products filteredProducts={filteredProducts} />

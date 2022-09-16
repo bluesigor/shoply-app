@@ -37,7 +37,7 @@ const ShoppingModal = ({ product }) => {
       >
         <Box sx={style}>
           <Typography
-            color="yellow"
+            color="inherit"
             id="modal-modal-title"
             variant="h6"
             component="h2"

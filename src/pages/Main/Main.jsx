@@ -22,7 +22,7 @@ const Main = () => {
       container
       columnSpacing={{ sm: 10, md: 40 }}
     >
-      <Grid m={6} item>
+      <Grid m={{ xs: 0, sm: 3, md: 6 }} item>
         <Typography mb={6} variant="h4" component="h3">
           Logitech G Pro X Superlight
         </Typography>
