@@ -48,6 +48,9 @@ const ProductCardButton = ({ id, product, price }) => {
             '@media (min-width:1024px)': {
               fontSize: '22px',
             },
+            '&:hover': {
+              textDecoration: 'underline',
+            },
           }}
           component="p"
         >

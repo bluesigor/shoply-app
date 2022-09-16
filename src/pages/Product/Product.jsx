@@ -14,11 +14,10 @@ const Product = () => {
   return (
     <Container>
       <Stack
-        p={{ xs: '20px 15px', md: '50px', sm: '100px' }}
+        p={{ xs: '20px 15px', sm: '30px', md: '30px' }}
         display="flex"
         alignItems="center"
-        height={{ xs: '120vh', sm: '130vh', lg: '70vh' }}
-        spacing={20}
+        height={{ xs: '90vh', sm: '90vh', lg: '70vh' }}
         direction={{ md: 'column', sm: 'column', xs: 'column', lg: 'row' }}
       >
         <ProductImage alt={singleProduct.title} image={singleProduct.image} />

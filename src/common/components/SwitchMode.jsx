@@ -1,5 +1,5 @@
 import React from 'react'
-import { CssBaseline, FormControlLabel, Switch } from '@mui/material'
+import { CssBaseline, IconButton } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
 
@@ -13,18 +13,15 @@ const SwitchMode = () => {
   return (
     <>
       <CssBaseline />
-      <FormControlLabel
+      <IconButton
         aria-label="control"
         sx={{
-          flex: 1,
-          display: 'flex',
-          width: '200px',
-          margin: '0px',
+          maxHeight: '100%',
         }}
         onClick={handleMode}
-        control={<Switch />}
-        label={theme === 'light' ? <LightModeIcon /> : <ModeNightIcon />}
-      />
+      >
+        {theme === 'dark' ? <ModeNightIcon /> : <LightModeIcon />}
+      </IconButton>
     </>
   )
 }

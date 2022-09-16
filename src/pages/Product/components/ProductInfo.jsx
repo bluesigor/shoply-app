@@ -39,32 +39,33 @@ const ProductInfo = ({ product }) => {
 
   return (
     <Box
-      flex={2}
-      display="flex"
+      flex={{ xs: 0.5, sm: 0.5, md: 0.5, xl: 2 }}
       flexDirection="column"
+      mt={{ xs: 1, sx: 2, sm: 2, md: 2 }}
       // margin={{ xs: '20px', md: '20px' }}
     >
       <Typography
-        fontSize={{ xs: '0.7em', sm: '1em', md: '1.3em' }}
+        fontSize={{ xs: '0.75em', sm: '1em', md: '1.3em' }}
         sx={{
           letterSpacing: '0.0935em',
           marginRight: 0,
         }}
-        flex={1}
+        fontWeight={700}
+        display="flex"
+        flex={{ xs: 0.5, sm: 0.5, md: 0.5, xl: 1 }}
+        textAlign="flexStart"
         p="4"
         component="p"
       >
         <Localizator str={product.title} />
         (<Localizator str={product.category} />)
       </Typography>
-      <Box display="flex" flex={1} flexDirection="column">
+      <Box display="flex" flex={0.5} flexDirection="column">
         <Typography
-          fontSize={{ xs: '0.75em', sm: '0.8em' }}
+          fontSize={{ xs: '0.7em', sm: '0.8em' }}
           fontWeight={400}
-          mt={4}
-          sx={{
-            flex: '1',
-          }}
+          mt={{ xs: 1, sm: 1, md: 2, xl: 5 }}
+          flex={{ xs: 0.5, sm: 0.5, md: 0.5, xl: 1 }}
         >
           <Localizator str={product.description} />
         </Typography>
@@ -76,7 +77,7 @@ const ProductInfo = ({ product }) => {
         />
         <Stack
           alignItems="flex-start"
-          mt={10}
+          mt={{ xs: 1, sm: 1, md: 5 }}
           p={1}
           direction="row"
           flex={1}
@@ -122,7 +123,7 @@ const ProductInfo = ({ product }) => {
             sx={{
               bgcolor: 'inherit',
               color: 'inherit',
-              marginTop: '20px',
+              marginTop: { xs: 0, sm: '20px' },
               '&:hover': {
                 bgcolor: 'inherit',
               },

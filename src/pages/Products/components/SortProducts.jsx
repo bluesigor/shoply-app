@@ -16,10 +16,13 @@ const SortProducts = ({ sortValue, setSortValue }) => {
   return (
     <Box
       sx={{
+        margin: 1,
+        padding: 1,
         display: 'flex',
         justifyContent: 'flex-end',
+        maxWidth: '100%',
       }}
-      component="div"
+      component="span"
     >
       <Select
         IconComponent={SortIcon}
@@ -27,6 +30,7 @@ const SortProducts = ({ sortValue, setSortValue }) => {
         id="demo-controlled-open-select"
         open={open}
         sx={{
+          width: '100px',
           fontSize: { xs: '14px', sm: '18px' },
           paddingRight: '20px',
         }}

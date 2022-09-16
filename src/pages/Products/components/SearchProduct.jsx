@@ -50,7 +50,10 @@ const SearchProduct = ({
         m={{ sm: 1, md: 2 }}
         sx={{
           backgroundColor: 'inherit',
-
+          fontSize: {
+            xs: '14px',
+            sm: '18px',
+          },
           width: '70%',
         }}
         id="filled-adornment-password"
@@ -75,6 +78,10 @@ const SearchProduct = ({
         color="inherit"
         variant="contained"
         sx={{
+          fontSize: {
+            xs: '14px',
+            sm: '18px',
+          },
           width: '20%',
         }}
       >
