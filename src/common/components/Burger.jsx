@@ -9,6 +9,9 @@ import { burgerPages } from '../../utils/consts/navbarConsts'
 import { useBurgerStyle } from '../../assets/styles/useBurgerStyle'
 import Localizator from './Localizator'
 
+import BurgelProfileLink from './BurgelProfileLink'
+import BurgerLogin from './BurgerLogin'
+
 const Burger = () => {
   const [anchorElNav, setAnchorElNav] = useState(null)
 
@@ -52,6 +55,7 @@ const Burger = () => {
           display: { xs: 'block', md: 'none' },
         }}
       >
+        <BurgelProfileLink handleCloseNavMenu={handleCloseNavMenu} />
         {burgerPages.map((page) => {
           return (
             <MenuItem
@@ -78,6 +82,7 @@ const Burger = () => {
             </MenuItem>
           )
         })}
+        <BurgerLogin handleCloseNavMenu={handleCloseNavMenu} />
       </Menu>
     </Box>
   )

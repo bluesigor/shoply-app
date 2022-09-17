@@ -1,5 +1,11 @@
 import { createTheme, ThemeProvider, useMediaQuery } from '@mui/material'
-import { createContext, useContext, useMemo, useReducer } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useReducer,
+} from 'react'
 import {
   userSettingsInitialState,
   userSettingsReducer,
@@ -24,13 +30,20 @@ export const UserSettingsProvider = ({ children }) => {
       }),
     [prefersMode],
   )
+
+  const memoizedLanguage = useMemo(() => state.language, [state.language])
+
+  const memoizedSetUserLanguage = useCallback(
+    (lang) => dispatch({ type: 'setUserLanguage', payload: lang }),
+    [dispatch],
+  )
+
   const userSettingsValue = {
     theme: state.theme,
     setUserThemeMode: (value) =>
       dispatch({ type: 'setUserThemeMode', payload: value }),
-    language: state.language,
-    setUserLanguage: (lang) =>
-      dispatch({ type: 'setUserLanguage', payload: lang }),
+    language: memoizedLanguage,
+    setUserLanguage: memoizedSetUserLanguage,
   }
 
   return (

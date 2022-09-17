@@ -8,10 +8,17 @@ const Login = () => {
   return (
     <Container
       sx={{
-        height: '70vh',
+        height: '80vh',
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
-      <Box p={6} display="flex">
+      <Box
+        p={{ xs: 2, sm: 4, md: 6 }}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <LoginLogo />
         <LoginForm />
       </Box>
