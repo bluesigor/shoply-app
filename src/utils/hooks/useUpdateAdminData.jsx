@@ -19,7 +19,7 @@ const useUpdateAdminData = () => {
 
       setNotificationOpen(`Product #${data.id} was successfully updated!`)
     } catch (e) {
-      setNotificationOpen('Something went wrong!')
+      setNotificationOpen('You trying to update not existing item!')
     }
   }
 

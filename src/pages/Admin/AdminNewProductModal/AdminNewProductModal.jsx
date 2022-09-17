@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, IconButton, Modal } from '@mui/material'
+import { Box, Button, Modal } from '@mui/material'
 
 import ModalQuantity from './components/ModalQuantity'
 import ModalHeader from './components/ModalHeader'
@@ -103,9 +103,9 @@ const AdminNewProductModal = () => {
 
   return (
     <>
-      <IconButton onClick={handleOpen}>
+      <Button color="inherit" variant="outlined" onClick={handleOpen}>
         <Localizator str="Add new product" />
-      </IconButton>
+      </Button>
       <Modal
         open={openModal}
         onClose={handleClose}
