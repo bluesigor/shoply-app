@@ -17,13 +17,15 @@ const UserTableRow = ({ id, firstname, username, email, lastname }) => {
       <TableCell align="right">{lastname}</TableCell>
       <TableCell align="right">{email}</TableCell>
       <TableCell align="right">{username}</TableCell>
-      <UserAccessPopup setIsAdmin={setIsAdmin} id={id} />
+      <UserAccessPopup setIsAdmin={setIsAdmin} isAdmin={isAdmin} id={id} />
       <AdminUserOrdersHistory id={id} />
       <BlockUserModalWrapper id={id} />
-      {isAdmin && (
+      {isAdmin ? (
         <TableCell align="right">
           <Typography align="right">Admin</Typography>
         </TableCell>
+      ) : (
+        <TableCell align="right"></TableCell>
       )}
     </TableRow>
   )

@@ -13,7 +13,7 @@ const AdminSidebar = () => {
     handleShowUsers,
   } = useAdminData()
   const classes = useSidebarStyle()
-  const { showPage } = useAdminDataContext()
+  const { showPage, blockedUsers } = useAdminDataContext()
 
   return (
     <Stack className={classes.root}>
@@ -42,18 +42,20 @@ const AdminSidebar = () => {
         <Localizator str="Products" />
       </Button>
 
-      <Button
-        sx={{
-          border: `${showPage.blockedUsers && '3px solid black'}  `,
-          fontWeight: `${showPage.blockedUsers && 700}`,
-        }}
-        variant="outlined"
-        color="inherit"
-        className={classes.button}
-        onClick={handleShowBlockedUsers}
-      >
-        <Localizator str="Blocked Users" />
-      </Button>
+      {blockedUsers.length > 0 && (
+        <Button
+          sx={{
+            border: `${showPage.blockedUsers && '3px solid black'}  `,
+            fontWeight: `${showPage.blockedUsers && 700}`,
+          }}
+          variant="outlined"
+          color="inherit"
+          className={classes.button}
+          onClick={handleShowBlockedUsers}
+        >
+          <Localizator str="Blocked Users" />
+        </Button>
+      )}
     </Stack>
   )
 }

@@ -23,6 +23,7 @@ const UsersTableHeader = () => {
         <TableCell align="right"></TableCell>
         <TableCell align="right"></TableCell>
         <TableCell align="right"></TableCell>
+        <TableCell align="right"></TableCell>
       </TableRow>
     </TableHead>
   )

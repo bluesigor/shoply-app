@@ -6,11 +6,25 @@ import Localizator from '../../../../../common/components/Localizator'
 
 import { useNotificationContext } from '../../../../../context/NotificationContext'
 
-const AccessPopupBody = ({ id, setIsAdmin, setOpen, open, anchorEl }) => {
+const AccessPopupBody = ({
+  id,
+  setIsAdmin,
+  isAdmin,
+  setOpen,
+  open,
+  anchorEl,
+}) => {
   const { setNotificationOpen } = useNotificationContext()
 
-  const setUserAdmin = () => {
-    setIsAdmin(true)
+  const handleAdminAccess = () => {
+    if (!isAdmin) {
+      setIsAdmin(true)
+      setOpen(false)
+      setNotificationOpen(`Now userId:${id} has an admin rights.`)
+    } else {
+      setIsAdmin(false)
+      setOpen(false)
+    }
   }
 
   return (
@@ -27,16 +41,16 @@ const AccessPopupBody = ({ id, setIsAdmin, setOpen, open, anchorEl }) => {
               flexDirection: 'column',
             }}
           >
-            <Localizator str={`Make user an Admin?`} />
+            <Localizator
+              str={
+                isAdmin ? `Disable admin's abilities?` : `Make user an Admin?`
+              }
+            />
             <Stack display="flex" direction="row">
               <Button
                 variant="outlined"
                 color="inherit"
-                onClick={() => {
-                  setUserAdmin()
-                  setOpen(false)
-                  setNotificationOpen(`Now userId:${id} has an admin rights.`)
-                }}
+                onClick={handleAdminAccess}
               >
                 <Localizator str="Confirm" />
               </Button>

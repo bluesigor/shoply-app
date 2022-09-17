@@ -17,10 +17,10 @@ const AdminProductsHeader = () => {
         <TableCell align="left">
           <Localizator str="Quantity" />
         </TableCell>
-        <TableCell align="left"></TableCell>
-        <TableCell align="center">
+        <TableCell align="right">
           <Localizator str="Actions" />
         </TableCell>
+        <TableCell></TableCell>
       </TableRow>
     </TableHead>
   )
