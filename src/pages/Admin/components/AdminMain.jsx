@@ -14,7 +14,7 @@ const AdminMain = () => {
   return (
     <Paper
       sx={{
-        margin: '30px',
+        margin: { xs: '0px', sm: '30px' },
         position: 'relative',
         minHeight: '60vh',
         display: 'flex',

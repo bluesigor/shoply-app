@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Input, Typography } from '@mui/material'
+import { Checkbox, Grid, Typography } from '@mui/material'
 
 import { useLoginStyle } from '../../../assets/styles/useLoginStyle'
 import Localizator from '../../../common/components/Localizator'
@@ -21,12 +21,7 @@ const AdminCheckbox = ({ onChange, value }) => {
       <Typography variant="p" component="h6" p={4}>
         <Localizator str="Sign in as an Admin?" />
       </Typography>
-      <Input
-        onChange={handleAdmin}
-        value={value}
-        disableUnderline={true}
-        type="checkbox"
-      />
+      <Checkbox onChange={handleAdmin} value={value} size="small" />
     </Grid>
   )
 }

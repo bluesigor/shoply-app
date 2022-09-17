@@ -13,7 +13,7 @@ export const useSidebarStyle = makeStyles((theme) => ({
     },
   },
   button: {
-    fontSize: '12px !important',
+    fontSize: '10px !important',
     margin: '10px !important',
     flex: 1,
     '@media (min-width:1024px)': {
