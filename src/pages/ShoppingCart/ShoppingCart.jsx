@@ -15,7 +15,7 @@ const ShoppingCart = () => {
   }
 
   return (
-    <Box p={8}>
+    <Box p={{ xs: 2, sm: 4, md: 6, xl: 8 }}>
       <Typography
         marginLeft={{ xs: '20px', md: '60px' }}
         component="h1"

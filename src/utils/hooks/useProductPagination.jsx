@@ -6,6 +6,7 @@ import sortProducts from '../helpers/sortProducts'
 
 const useProductPagination = () => {
   const [searchItem, setSearchItem] = useState('')
+  const [isFallbackProduct, setIsFallbackProduct] = useState(false)
   const [sortValue, setSortValue] = useState('')
   const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -45,12 +46,19 @@ const useProductPagination = () => {
       product.title.toLowerCase().includes(searchItem.toLowerCase()),
     )
 
-    setFilteredProducts(tempItem)
+    if (tempItem) {
+      setFilteredProducts(tempItem)
+    }
+
+    if (tempItem.length === 0 || !searchItem) {
+      setIsFallbackProduct(true)
+    }
   }
 
   const resetSearch = () => {
     setSearchItem('')
     setFilteredProducts(productsData)
+    setIsFallbackProduct(false)
   }
 
   return {
@@ -62,6 +70,7 @@ const useProductPagination = () => {
     searchItem,
     searchProduct,
     resetSearch,
+    isFallbackProduct,
   }
 }
 

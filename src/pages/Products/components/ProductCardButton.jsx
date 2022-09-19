@@ -68,7 +68,8 @@ const ProductCardButton = ({ id, product, price }) => {
         }}
         component="p"
       >
-        <Localizator str={`${price} $`} />
+        <Localizator str={price} />
+        <span>$</span>
       </Typography>
 
       <IconButton

@@ -17,13 +17,23 @@ const ShoppingCartOrderButton = () => {
         marginTop: '50px',
         display: 'flex',
         justifyContent: 'space-between',
-        height: '80px',
+        height: '40px',
       }}
     >
-      <Button onClick={clearCart} color="inherit" variant="contained">
+      <Button
+        size="small"
+        onClick={clearCart}
+        color="inherit"
+        variant="contained"
+      >
         <Localizator str="Clear Cart" />
       </Button>
-      <Button onClick={handleToggle} color="inherit" variant="contained">
+      <Button
+        size="small"
+        onClick={handleToggle}
+        color="inherit"
+        variant="contained"
+      >
         <Localizator str="Order Now" />
       </Button>
       <Backdrop

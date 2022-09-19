@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Grid, IconButton } from '@mui/material'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-import { Logout } from '@mui/icons-material'
 
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 import Localizator from './Localizator'
@@ -12,12 +11,8 @@ import { useShoppingCartContext } from '../../context/ShoppingCartContext'
 
 const LoginNavbar = () => {
   const classes = useNavbarStyle()
-  const { isLoggedIn, setIsLoggedIn, userData, isAdmin } = useUserDataContext()
+  const { isLoggedIn, userData, isAdmin } = useUserDataContext()
   const { cartLength } = useShoppingCartContext()
-
-  const handleLogout = (e) => {
-    setIsLoggedIn(false)
-  }
 
   return (
     <Grid
@@ -46,6 +41,7 @@ const LoginNavbar = () => {
         <Button
           color="inherit"
           sx={{
+            marginLeft: '30px',
             alignItems: 'center',
           }}
         >
@@ -65,11 +61,6 @@ const LoginNavbar = () => {
             <Localizator str="Login" />
           </Link>
         </Button>
-      )}
-      {isLoggedIn && (
-        <IconButton onClick={handleLogout}>
-          <Logout />
-        </IconButton>
       )}
     </Grid>
   )
