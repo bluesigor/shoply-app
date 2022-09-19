@@ -6,6 +6,8 @@ import SortProducts from './components/SortProducts'
 import Products from './components/Products'
 import useProductPagination from '../../utils/hooks/useProductPagination'
 import SearchProduct from './components/SearchProduct'
+import Loader from '../../common/components/Loader'
+import { useGetProducts } from '../../services/getProducts/getProducts'
 
 const ProductsWrapper = () => {
   const {
@@ -17,7 +19,14 @@ const ProductsWrapper = () => {
     searchItem,
     searchProduct,
     resetSearch,
+    isFallbackProduct,
   } = useProductPagination()
+
+  const { isLoading } = useGetProducts()
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <Container maxWidth="xl">
@@ -52,7 +61,10 @@ const ProductsWrapper = () => {
         >
           <FilterProducts handleCategory={handleCategory} />
         </Box>
-        <Products filteredProducts={filteredProducts} />
+        <Products
+          isFallbackProduct={isFallbackProduct}
+          filteredProducts={filteredProducts}
+        />
       </Box>
     </Container>
   )

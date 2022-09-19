@@ -32,7 +32,7 @@ const SortProducts = ({ sortValue, setSortValue }) => {
         sx={{
           width: '100px',
           fontSize: { xs: '14px', sm: '18px' },
-          paddingRight: '20px',
+          // paddingRight: '20px',
         }}
         variant="standard"
         onClose={handleClose}
@@ -47,7 +47,7 @@ const SortProducts = ({ sortValue, setSortValue }) => {
           }}
           value="Sort by title"
         >
-          <Localizator str="Sort by title" />
+          <Localizator str="Title" />
         </MenuItem>
         <MenuItem
           sx={{
@@ -55,7 +55,7 @@ const SortProducts = ({ sortValue, setSortValue }) => {
           }}
           value="Sort by price up"
         >
-          <Localizator str="Sort by price up" />
+          <Localizator str="Price" />
           <ArrowUpward
             sx={{
               fontSize: '18px',
@@ -68,7 +68,7 @@ const SortProducts = ({ sortValue, setSortValue }) => {
           }}
           value="Sort by price down"
         >
-          <Localizator str="Sort by price down" />
+          <Localizator str="Price" />
           <ArrowDownward
             sx={{
               fontSize: '18px',

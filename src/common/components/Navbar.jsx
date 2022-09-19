@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Button, Paper, Toolbar, Typography } from '@mui/material'
+import { Button, IconButton, Paper, Toolbar, Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import { Box, Container } from '@mui/system'
 
@@ -9,9 +9,15 @@ import LoginNavbar from './LoginNavbar'
 import { useNavbarStyle } from '../../assets/styles/useNavbarStyle'
 import Localizator from './Localizator'
 import SwitchMode from './SwitchMode'
+import { useUserDataContext } from '../../context/UserDataContext'
+import { Logout } from '@mui/icons-material'
 
 const Navbar = () => {
   const classes = useNavbarStyle()
+  const { isLoggedIn, setIsLoggedIn } = useUserDataContext()
+  const handleLogout = (e) => {
+    setIsLoggedIn(false)
+  }
 
   return (
     <>
@@ -61,7 +67,17 @@ const Navbar = () => {
                 <LoginNavbar />
               </Box>
               <SwitchMode />
-
+              {isLoggedIn && (
+                <IconButton
+                  ml={3}
+                  sx={{
+                    marginLeft: '30px',
+                  }}
+                  onClick={handleLogout}
+                >
+                  <Logout />
+                </IconButton>
+              )}
               <Burger />
             </Toolbar>
           </Container>

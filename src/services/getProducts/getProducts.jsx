@@ -7,13 +7,20 @@ import { productsURL } from '../../utils/consts/productsConsts'
 
 export const useGetProducts = () => {
   const [productsData, setProductsData] = useState([])
-
+  const [isLoading, setIsLoading] = useState(false)
   const { setNotificationOpen } = useNotificationContext()
 
   useEffect(() => {
     const getProductsData = async () => {
+      setIsLoading(true)
+
       try {
         const response = await axios.get(productsURL)
+
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+
         setProductsData(response.data)
       } catch (e) {
         setNotificationOpen(<Localizator str="Something went wrong" />)
@@ -21,6 +28,9 @@ export const useGetProducts = () => {
     }
 
     getProductsData()
+
+    return () => clearTimeout()
   }, [])
-  return { productsData }
+
+  return { productsData, isLoading }
 }

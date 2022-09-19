@@ -19,6 +19,9 @@ const SearchProduct = ({
 }) => {
   const handleSearch = (e) => {
     const value = e.target.value
+    if (!value) {
+      resetSearch()
+    }
     setSearchItem(value)
   }
 

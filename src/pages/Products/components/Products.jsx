@@ -4,8 +4,8 @@ import { Paper } from '@mui/material'
 import ProductCard from './ProductCard'
 import ProductFallback from './ProductFallback'
 
-const Products = ({ filteredProducts }) => {
-  if (!filteredProducts) {
+const Products = ({ filteredProducts, isFallbackProduct }) => {
+  if (isFallbackProduct) {
     return <ProductFallback />
   }
 

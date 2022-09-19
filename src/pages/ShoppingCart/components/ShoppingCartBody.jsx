@@ -60,7 +60,7 @@ const ShoppingCardBody = () => {
               component="th"
               scope="row"
             >
-              <img width="100px" height="100px" src={image} alt={title} />
+              <img width="60px" height="80px" src={image} alt={title} />
               <Localizator sx={{ textAlign: 'center' }} str={title} />
             </TableCell>
             <TableCell align="right">{price}$</TableCell>
