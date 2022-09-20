@@ -31,7 +31,5 @@ export const useGetProducts = () => {
     return () => clearTimeout()
   }, [])
 
-  useEffect(() => {}, [productsData])
-
   return { productsData, isLoading }
 }
