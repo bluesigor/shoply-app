@@ -6,12 +6,18 @@ import { useNotificationContext } from '../../../../context/NotificationContext'
 import Localizator from '../../../../common/components/Localizator'
 
 const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
-  const { removeBlockedUser, blockedUsers, unblockUser } = useAdminDataContext()
+  const {
+    removeBlockedUser,
+    blockedUsers,
+    unblockUser,
+    showUsers,
+  } = useAdminDataContext()
   const { setNotificationOpen } = useNotificationContext()
 
   const handleBlock = () => {
     const tempUser = blockedUsers.find((user) => (user.id === id ? user : null))
 
+    showUsers()
     removeBlockedUser(tempUser.id)
     setNotificationOpen(`User ${tempUser.id} was blocked forever!`)
   }
@@ -19,6 +25,7 @@ const BlockedUserRow = ({ id, firstname, lastname, email, username }) => {
   const handleUnblock = () => {
     const tempUser = blockedUsers.find((user) => (user.id === id ? user : null))
 
+    showUsers()
     unblockUser(tempUser.id)
     setNotificationOpen(`User ${tempUser.id} was unblocked!`)
   }
