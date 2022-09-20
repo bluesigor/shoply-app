@@ -129,7 +129,7 @@ const ProductInfo = ({ product }) => {
               },
             }}
           >
-            <Localizator str="Go to Shopping Bag" />
+            <Localizator str="Go to Shopping Cart" />
           </Button>
         )}
       </Box>
