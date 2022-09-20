@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { useAdminDataContext } from '../../context/AdminUsersDataContext'
 import { useNotificationContext } from '../../context/NotificationContext'
+import { useGetProducts } from '../getProducts/getProducts'
 
 const useAdminData = () => {
   const {
@@ -10,8 +11,11 @@ const useAdminData = () => {
     showUsers,
     showProducts,
     showBlockedUsers,
+    setAdminProductsData,
   } = useAdminDataContext()
+
   const { setNotificationOpen } = useNotificationContext()
+  const { productsData } = useGetProducts()
 
   const handleShowProducts = () => {
     showProducts()
@@ -20,6 +24,10 @@ const useAdminData = () => {
   const handleShowBlockedUsers = () => {
     showBlockedUsers()
   }
+
+  useEffect(() => {
+    setAdminProductsData(productsData)
+  }, [productsData])
 
   useEffect(() => {
     const getUsers = async () => {
