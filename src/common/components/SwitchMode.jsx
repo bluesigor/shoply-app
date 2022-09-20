@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CssBaseline, IconButton } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
@@ -9,6 +9,10 @@ const SwitchMode = () => {
   const { setUserThemeMode, theme } = useUserSettingsContext()
   const handleMode = () =>
     theme === 'dark' ? setUserThemeMode('light') : setUserThemeMode('dark')
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme))
+  }, [theme])
 
   return (
     <>

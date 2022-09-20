@@ -1,6 +1,8 @@
+import { languageStore, themeStore } from '../../services/setUserTheme'
+
 export const userSettingsInitialState = {
-  theme: 'light',
-  language: 'en',
+  theme: themeStore,
+  language: languageStore,
 }
 export const userSettingsReducer = (
   state = userSettingsInitialState,

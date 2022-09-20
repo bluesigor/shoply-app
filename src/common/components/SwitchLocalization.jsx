@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
 import Localizator from './Localizator'
@@ -11,6 +11,10 @@ const SwitchLocalization = () => {
   const handleLanguageChoice = (e) => {
     setUserLanguage(e.target.value)
   }
+
+  useEffect(() => {
+    localStorage.setItem('language', JSON.stringify(language))
+  }, [language])
 
   return (
     <FormControl sx={{ m: 4, minWidth: 120 }} size="small">
