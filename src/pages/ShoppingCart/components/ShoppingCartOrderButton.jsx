@@ -5,10 +5,17 @@ import { Box } from '@mui/system'
 import Localizator from '../../../common/components/Localizator'
 import { useShoppingCartContext } from '../../../context/ShoppingCartContext'
 import usePurchase from '../../../utils/hooks/usePurchase'
+import { useNotificationContext } from '../../../context/NotificationContext'
 
 const ShoppingCartOrderButton = () => {
   const { open, handleClose, handleToggle } = usePurchase()
   const { clearCart } = useShoppingCartContext()
+  const { setNotificationOpen } = useNotificationContext()
+
+  const handleClearCart = () => {
+    clearCart()
+    setNotificationOpen('Your cart was cleared!')
+  }
 
   return (
     <Box
@@ -22,7 +29,7 @@ const ShoppingCartOrderButton = () => {
     >
       <Button
         size="small"
-        onClick={clearCart}
+        onClick={handleClearCart}
         color="inherit"
         variant="contained"
       >
