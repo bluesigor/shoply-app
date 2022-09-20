@@ -3,22 +3,18 @@ import axios from 'axios'
 
 import { useAdminDataContext } from '../../context/AdminUsersDataContext'
 import { useNotificationContext } from '../../context/NotificationContext'
-import { useGetProducts } from '../getProducts/getProducts'
 
 const useAdminData = () => {
   const {
     setAdminUsersData,
-    setAdminProductsData,
     showUsers,
     showProducts,
     showBlockedUsers,
   } = useAdminDataContext()
   const { setNotificationOpen } = useNotificationContext()
-  const { productsData } = useGetProducts()
 
   const handleShowProducts = () => {
     showProducts()
-    setAdminProductsData(productsData)
   }
 
   const handleShowBlockedUsers = () => {
