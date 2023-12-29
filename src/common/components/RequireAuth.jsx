@@ -1,17 +1,17 @@
-import React from 'react'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import React from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-import { useUserDataContext } from '../../context/UserDataContext'
+import { useUserDataContext } from "../../context/UserDataContext";
 
 const RequireAuth = () => {
-  const { isLoggedIn } = useUserDataContext()
-  const location = useLocation()
-
+  const { isLoggedIn } = useUserDataContext();
+  const location = useLocation();
+  const isLogged = JSON.parse("isLoggedIn");
   if (!isLoggedIn) {
-    return <Navigate to="/login" state={{ from: location }} />
+    return <Navigate to="/login" state={{ from: location }} />;
   }
 
-  return <Outlet />
-}
+  return <Outlet />;
+};
 
-export default RequireAuth
+export default RequireAuth;

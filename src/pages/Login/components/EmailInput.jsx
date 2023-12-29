@@ -1,6 +1,6 @@
-import React from 'react'
-import { AccountCircle } from '@mui/icons-material'
-import { InputAdornment, TextField } from '@mui/material'
+import React, { memo } from "react";
+import { AccountCircle } from "@mui/icons-material";
+import { InputAdornment, TextField } from "@mui/material";
 
 const EmailInput = ({ value, onChange, error }) => {
   const handleUpdate = (e) => {
@@ -8,15 +8,15 @@ const EmailInput = ({ value, onChange, error }) => {
       return {
         ...prev,
         email: e.target.value,
-      }
-    })
-  }
+      };
+    });
+  };
 
   return (
     <TextField
       aria-label="email"
       error={error}
-      helperText={error ? 'Please type your email.' : ''}
+      helperText={error ? "Please type your email." : ""}
       autoFocus={true}
       value={value}
       onChange={handleUpdate}
@@ -29,7 +29,7 @@ const EmailInput = ({ value, onChange, error }) => {
         ),
       }}
     />
-  )
-}
+  );
+};
 
-export default EmailInput
+export default memo(EmailInput);
